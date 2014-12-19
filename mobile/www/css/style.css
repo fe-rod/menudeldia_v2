@@ -30,6 +30,10 @@
     padding-left: 12px;
 }
 
+.platform-android .bar-blue .icon{
+    color: #fff;
+}
+
 .platform-android .bar-blue .title.title-left.header-item{
     color: #fff;
 }

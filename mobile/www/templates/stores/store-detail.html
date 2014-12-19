@@ -1,0 +1,48 @@
+<ion-view view-title="{{store.name | uppercase}}">
+    <ion-content class="padding" scroll="true">
+        <div class="row">
+            <div class="col-20">
+                <img src="img/{{store.icon}}.png" height="50px" width="50px">
+            </div>
+            <div class="col-80">
+                <h4>{{store.name}}</h4>
+            </div>
+        </div>
+
+        <div class="menuDetailContent">
+            <div class="list list-inset">
+                <div ng-if="store.description.length">
+                    <div class="item item-divider">
+                        Descripci&oacute;n
+                    </div>
+                    <p class="item item-text-wrap" href="#">
+                        {{store.description}}
+                    </p>
+                </div>
+                <div ng-if="store.address.length">
+                    <div class="item item-divider">
+                        Direcci&oacute;n
+                    </div>
+                    <p class="item item-text-wrap" href="#">
+                        {{store.address}}
+                    </p>
+                </div>
+                <div ng-if="store.menu.length">
+                    <div class="item item-divider">
+                        Men&uacute;
+                    </div>
+                    <p class="item item-text-wrap" href="#">
+                        {{store.menu}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar-light menuDetailFooter">
+        <div class="menuDetailButtons button-bar">
+            <a class="button button-stable" href="tel:{{store.phone}}"><span class="icon ion-ios7-telephone"></span></a>
+            <a class="button button-stable" href="#/tab/storeMap/{{store.id}}"><span class="icon ion-ios7-location"></span></a>
+            <a class="button button-stable" href="mailto:{{store.email}}"><span class="icon ion-ios7-email"></span></a>
+        </div>
+    </ion-footer-bar>
+</ion-view>
