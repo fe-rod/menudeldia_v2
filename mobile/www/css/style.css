@@ -1,1 +1,51 @@
 /* Empty. Add your own CSS if you like */
+
+
+.platform-android .tabs{
+    height: 35px;
+}
+
+.platform-android .has-tabs-top{
+    top: 75px;
+}
+
+.platform-android .tabs-striped .tabs, .platform-android .tabs-striped .tabs {
+    background-color: #2196F3;
+}
+
+.platform-android .tabs-striped .tabs, .platform-android .tabs-striped .tabs a {
+    color: #fff;
+}
+
+.platform-android .tab-item .icon {
+    display: none;
+}
+
+.platform-android .bar-blue {
+    background-color: #2196F3;
+    border-color: #2196F3;
+}
+
+.platform-android .bar-blue .title.title-left{
+    padding-left: 12px;
+}
+
+.platform-android .bar-blue .title.title-left.header-item{
+    color: #fff;
+}
+
+.platform-android .tabs-top.tabs-striped .tab-item.tab-item-active,
+.platform-android .tabs-top.tabs-striped .tab-item.active,
+.platform-android .tabs-top.tabs-striped .tab-item.activated{
+    border-width: 0px 0px 2px 0px !important;
+    border-color: #fff;
+}
+
+.platform-android .tabs-icon-top > .tabs .tab-item,
+.platform-android .tabs-icon-top.tabs .tab-item,
+.platform-android .tabs-icon-bottom > .tabs .tab-item,
+.platform-android .tabs-icon-bottom.tabs .tab-item{
+    font-size: 12px;
+    line-height: 24px;
+}
+
