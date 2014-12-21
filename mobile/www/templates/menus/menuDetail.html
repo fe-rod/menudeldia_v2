@@ -1,63 +1,39 @@
 <ion-view view-title="{{menu.store.name}}">
-    <ion-content class="padding" scroll="true">
-        <div class="row">
-            <div class="col-20">
-                <img src="img/{{menu.store.icon}}.png" height="50px" width="50px">
+    <ion-content class="menuDetail" scroll="true">
+        <div class="row header-title">
+            <div class="col-75 col-center">
+                <h4 class="menu-title">{{menu.name}}</h4>
             </div>
-            <div class="col-66">
-                <h4>{{menu.name}}</h4>
-            </div>
-            <div class="col-20">
+            <div class="col-20 col-center price">
                 <h4>$ {{menu.price}}</h4>
             </div>
         </div>
-        <div class="menuDetailContent">
-            <div class="list list-inset">
-                <div class="item item-divider">
-                    Descripci&oacute;n
-                </div>
-                <p class="item item-text-wrap" href="#">
-                    {{menu.description}}
-                </p>
-                <div class="item item-divider">
-                    Ingredientes
-                </div>
-                <p class="item item-text-wrap" href="#">
-                    {{menu.description}}
-                </p>
+        <div class="row divider">
+            <div class="col col-center">
+                Descripci&oacute;n
             </div>
         </div>
-        <div class="menuDetailTags">
-            <button class="button button-dark">
-                saludable
-            </button>
-            <button class="button button-dark">
-                celiacos
-            </button>
-            <button class="button button-dark">
-                vegetariano
-            </button>
-            <button class="button button-dark">
-                sin sal
-            </button>
+        <div class="row description">
+            <div class="col">
+                {{menu.description}}
+            </div>
         </div>
-        <!--<div class="menuDetailButtons">-->
-            <!--<button class="button button-stable">-->
-                <!--<span class="icon ion-ios7-telephone"></span>-->
-            <!--</button>-->
-            <!--<button class="button button-stable middle">-->
-                <!--<span class="icon ion-ios7-location"></span>-->
-            <!--</button>-->
-            <!--<button class="button button-stable">-->
-                <!--<span class="icon ion-ios7-star"></span>-->
-            <!--</button>-->
-        <!--</div>-->
+        <div class="row divider">
+            <div class="col col-center">
+                Ingredientes
+            </div>
+        </div>
+        <div class="row description">
+            <div class="col">
+                {{menu.description}}
+            </div>
+        </div>
     </ion-content>
-    <ion-footer-bar class="bar-light menuDetailFooter">
-        <div class="menuDetailButtons button-bar">
-            <a class="button button-stable" href="tel:{{menu.store.phone}}"><span class="icon ion-ios7-telephone"></span></a>
-            <a class="button button-stable" href="#/tab/menuMap/{{menu.store.id}}"><span class="icon ion-ios7-location"></span></a>
-            <a class="button button-stable"><span class="icon ion-ios7-star"></span></a>
-        </div>
-    </ion-footer-bar>
+    <!--<ion-footer-bar>-->
+        <!--<div class="button-bar">-->
+            <!--<a class="button button-stable" href="tel:{{menu.store.phone}}"><span class="icon ion-ios7-telephone"></span></a>-->
+            <!--<a class="button button-stable" href="#/tab/menuMap/{{menu.store.id}}"><span class="icon ion-ios7-location"></span></a>-->
+            <!--<a class="button button-stable"><span class="icon ion-ios7-star"></span></a>-->
+        <!--</div>-->
+    <!--</ion-footer-bar>-->
 </ion-view>

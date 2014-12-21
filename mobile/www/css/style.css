@@ -53,3 +53,49 @@
     line-height: 24px;
 }
 
+.menuDetail .header-title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.menuDetail .header-title .col-75 {
+    padding: 0 0 0 15px;
+}
+
+.menuDetail .header-title h4.menu-title{
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 20px;
+}
+
+.menuDetail .header-title .price{
+    background-color: #64DD17;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.menuDetail .header-title .price h4{
+    font-size: 20px;
+    color: #FFF;
+}
+
+.menuDetail .divider{
+    margin-top: 20px;
+    padding: 10px 10px 0 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.menuDetail .divider .col{
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.menuDetail .description{
+    margin-top: 10px;
+    padding: 0 10px 0 10px;
+}
+
+.footer-buttons .icon{
+    text-align: center;
+    font-size: 40px;
+}
+
