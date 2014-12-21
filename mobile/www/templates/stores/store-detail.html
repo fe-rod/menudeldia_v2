@@ -1,6 +1,6 @@
-<ion-view view-title="{{store.name | uppercase}}">
-    <ion-content class="padding" scroll="true">
-        <div class="row">
+<ion-view view-title="{{store.name}}">
+    <ion-content class="menuDetail" scroll="true">
+        <div class="row store-title">
             <div class="col-20">
                 <img src="img/{{store.icon}}.png" height="50px" width="50px">
             </div>
@@ -9,40 +9,60 @@
             </div>
         </div>
 
-        <div class="menuDetailContent">
-            <div class="list list-inset">
-                <div ng-if="store.description.length">
-                    <div class="item item-divider">
-                        Descripci&oacute;n
-                    </div>
-                    <p class="item item-text-wrap" href="#">
-                        {{store.description}}
-                    </p>
-                </div>
-                <div ng-if="store.address.length">
-                    <div class="item item-divider">
-                        Direcci&oacute;n
-                    </div>
-                    <p class="item item-text-wrap" href="#">
-                        {{store.address}}
-                    </p>
-                </div>
-                <div ng-if="store.menu.length">
-                    <div class="item item-divider">
-                        Men&uacute;
-                    </div>
-                    <p class="item item-text-wrap" href="#">
-                        {{store.menu}}
-                    </p>
-                </div>
+        <div ng-if="store.description.length" class="row divider">
+            <div class="col col-center">
+                DESCRIPCI&Oacute;N
+            </div>
+        </div>
+        <div ng-if="store.description.length" class="row description">
+            <div class="col">
+                {{store.description}}
+            </div>
+        </div>
+        <div ng-if="store.address.length" class="row divider">
+            <div class="col col-center">
+                INGREDIENTES
+            </div>
+        </div>
+        <div ng-if="store.address.length" class="row description">
+            <div class="col">
+                {{store.address}}
+            </div>
+        </div>
+        <div ng-if="store.menu.length" class="row divider">
+            <div class="col col-center">
+                MEN&Uacute;
+            </div>
+        </div>
+        <div ng-if="store.menu.length" class="row description">
+            <div class="col">
+                {{store.menu}}
             </div>
         </div>
     </ion-content>
-    <ion-footer-bar class="bar-light menuDetailFooter">
-        <div class="menuDetailButtons button-bar">
-            <a class="button button-stable" href="tel:{{store.phone}}"><span class="icon ion-ios7-telephone"></span></a>
-            <a class="button button-stable" href="#/tab/storeMap/{{store.id}}"><span class="icon ion-ios7-location"></span></a>
-            <a class="button button-stable" href="mailto:{{store.email}}"><span class="icon ion-ios7-email"></span></a>
+    <ion-footer-bar class="action-buttons-footer">
+        <div class="row action-buttons">
+            <div class="col">
+                <div class="fab red">
+                    <core-icon icon="" role="img">
+                        <i class="icon ion-android-call"></i>
+                    </core-icon>
+                </div>
+            </div>
+            <div class="col">
+                <div class="fab red">
+                    <core-icon icon="" role="img">
+                        <i class="icon ion-location"></i>
+                    </core-icon>
+                </div>
+            </div>
+            <div class="col">
+                <div class="fab red">
+                    <core-icon icon="" role="img">
+                        <i class="icon ion-chatbox-working"></i>
+                    </core-icon>
+                </div>
+            </div>
         </div>
     </ion-footer-bar>
 </ion-view>

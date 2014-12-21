@@ -11,13 +11,13 @@
         <!--</button>-->
         <!--</div>-->
         <ion-list can-swipe="true">
-            <ion-item ng-repeat="menu in menus" class="item item-avatar menuList" href="#/tab/menu/{{menu.id}}">
+            <ion-item ng-repeat="menu in menus" class="item item-text-wrap item-avatar menuList" href="#/tab/menu/{{menu.id}}">
                 <img  src="img/{{menu.store.icon}}.png">
                 <div class="row">
                     <div class="col-90">
                         {{menu.name}}
                     </div>
-                    <div class="col-10">
+                    <div class="col-20">
                         ${{menu.price}}
                     </div>
                 </div>

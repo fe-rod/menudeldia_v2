@@ -86,16 +86,32 @@
 }
 
 .menuDetail .divider .col{
-    color: rgba(0, 0, 0, 0.54);
+    color: rgba(0, 0, 0, 0.26);
 }
 
 .menuDetail .description{
     margin-top: 10px;
     padding: 0 10px 0 10px;
+    font-size: 15px;
 }
 
-.footer-buttons .icon{
+.action-buttons-footer{
+    height: 110px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.action-buttons .col{
     text-align: center;
-    font-size: 40px;
+}
+
+.menuDetail.scroll-content{
+    height: 100%;
+}
+
+
+.menuDetail .store-title{
+    padding-top: 20px;
+    padding-left:13px;
+    padding-bottom: 0;
 }
 
