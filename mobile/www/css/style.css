@@ -13,6 +13,10 @@
     background-color: #2196F3;
 }
 
+[nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
+    background-color: #2196F3;
+}
+
 .platform-android .tabs-striped .tabs, .platform-android .tabs-striped .tabs a {
     color: #fff;
 }
@@ -22,6 +26,11 @@
 }
 
 .platform-android .bar-blue {
+    background-color: #2196F3;
+    border-color: #2196F3;
+}
+
+.platform-android .bar-stable {
     background-color: #2196F3;
     border-color: #2196F3;
 }
@@ -96,8 +105,13 @@
 }
 
 .action-buttons-footer{
-    height: 110px;
-    background-color: rgba(255, 255, 255, 0.5);
+    height: 100px;
+    background: none;
+}
+
+.action-buttons{
+    background-color: rgba(255, 255, 255, 0.75);
+    height: 94px;
 }
 
 .action-buttons .col{
@@ -108,10 +122,8 @@
     height: 100%;
 }
 
-
 .menuDetail .store-title{
     padding-top: 20px;
     padding-left:13px;
     padding-bottom: 0;
 }
-
