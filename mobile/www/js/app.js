@@ -54,6 +54,9 @@ angular.module('todayMenu', ['ionic'])
                   templateUrl: 'templates/menus/menuDetail.html',
                   controller: 'MenuDetailCtrl'
               }
+          },
+          resolve: {
+              data: function (Menus,$stateParams) { return Menus.get($stateParams.menuId); }
           }
       })
       .state('tab.stores', {
@@ -72,6 +75,9 @@ angular.module('todayMenu', ['ionic'])
                   templateUrl: 'templates/stores/store-detail.html',
                   controller: 'StoreDetailCtrl'
               }
+          },
+          resolve: {
+              data: function (Stores,$stateParams) { return Stores.getById($stateParams.storeId); }
           }
       })
 
