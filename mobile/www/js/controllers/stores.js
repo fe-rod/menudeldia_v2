@@ -1,6 +1,6 @@
 angular.module('todayMenu')
 
-    .controller('StoresCtrl', function($scope,$rootScope, Stores) {
+    .controller('StoresCtrl', function($scope,$rootScope, Stores, $log) {
         const pageSize = 10;
         var pageCounter = 0;
 
@@ -22,7 +22,7 @@ angular.module('todayMenu')
                 obj = _.extend(obj, {
                     tagsString: _.reduce(obj.tags,function(mem,item){
                         if(mem == "") { return item.name; }
-                        return mem + ", " + item.name;
+                        return mem + " - " + item.name;
                     },"")
                 });
                 return obj;
@@ -69,11 +69,18 @@ angular.module('todayMenu')
 //            });
     })
 
-    .controller('StoreDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data) {
+    .controller('StoreDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $log) {
         $rootScope.hideTabs = true;
         $rootScope.hideFilter = true;
-        debugger;
 
+        $log.info(data);
+
+        data = _.extend(data, {
+            tagsString: _.reduce(data.tags,function(mem,item){
+                if(mem == "") { return item.name; }
+                return mem + " - " + item.name;
+            },"")
+        });
 
         $scope.store = data;
         $scope.distanceAvailable = $stateParams.distance != 0;

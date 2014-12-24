@@ -13,7 +13,9 @@
                 var km = value / 1000;
                 return parseFloat(km).toFixed(1) + ' km';
             }
-            return value.toString() + ' m';
+            if(value)
+                return value.toString() + ' m';
+            return '';
         };
     }
 

@@ -127,3 +127,19 @@
     padding-left:13px;
     padding-bottom: 0;
 }
+
+.mapContent .scroll{
+    height: 100%;
+}
+
+.mapContent .map{
+    height: 100%;
+}
+
+.favoriteMenu .icon {
+    color: #838383;
+}
+
+.favoriteMenu .icon.active {
+    color: #e4c613;
+}

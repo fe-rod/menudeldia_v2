@@ -8,22 +8,22 @@
                 <h4>$ {{menu.price}}</h4>
             </div>
         </div>
-        <div class="row divider">
+        <div ng-show="menu.description.length" class="row divider">
             <div class="col col-center">
                 DESCRIPCI&Oacute;N
             </div>
         </div>
-        <div class="row description">
+        <div ng-show="menu.description.length" class="row description">
             <div class="col">
                 {{menu.description}}
             </div>
         </div>
-        <div class="row divider">
+        <div ng-show="menu.ingredients.length" class="row divider">
             <div class="col col-center">
                 INGREDIENTES
             </div>
         </div>
-        <div class="row description">
+        <div ng-show="menu.ingredients.length" class="row description">
             <div class="col">
                 {{menu.ingredients}}
             </div>
@@ -34,25 +34,25 @@
     <ion-footer-bar class="action-buttons-footer">
         <div class="row action-buttons">
             <div class="col">
-                <div class="fab red">
+                <a href="tel:{{menu.nearestLocation.phone}}" class="fab red">
                     <core-icon icon="" role="img">
                         <i class="icon ion-android-call"></i>
                     </core-icon>
-                </div>
+                </a>
             </div>
             <div class="col">
-                <div class="fab red">
+                <a href="#/tab/menuMap/{{menu.nearestLocation.latitude}}/{{menu.nearestLocation.longitude}}" class="fab red">
                     <core-icon icon="" role="img">
                         <i class="icon ion-location"></i>
                     </core-icon>
-                </div>
+                </a>
             </div>
             <div class="col">
-                <div class="fab red">
+                <a class="fab red">
                     <core-icon icon="" role="img">
                         <i class="icon ion-chatbox-working"></i>
                     </core-icon>
-                </div>
+                </a>
             </div>
         </div>
     </ion-footer-bar>

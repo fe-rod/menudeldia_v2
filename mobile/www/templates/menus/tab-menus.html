@@ -23,7 +23,11 @@
                 </div>
                 <div class="row">
                     <div class="col-90">
-                        <p>{{menu.nearestLocation.restaurantName}} <span ng-show="menu.nearestLocation.distance>=0">- {{menu.nearestLocation.distance}} km</span></p>
+                        <p>{{menu.nearestLocation.restaurantName}}
+                            <span ng-show="menu.nearestLocation.distance>=0">
+                            - {{menu.nearestLocation.distance | distance }}
+                            </span>
+                        </p>
                     </div>
                 </div>
                 <ion-option-button class="favoriteMenu button-stable" ng-click="favorite(menu)">

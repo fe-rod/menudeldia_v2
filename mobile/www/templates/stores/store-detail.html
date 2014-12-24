@@ -10,22 +10,28 @@
                 <h5 style="font-size:10px">{{store.email}}</h5>
             </div>
         </div>
-
-        <div ng-repeat="location in store.locations">
-            <div class="row divider">
-                <div class="col col-center">
-                    {{location.description}}
-                </div>
+        <div ng-show="store.tagsString.length" class="row divider">
+            <div class="col col-center">
+                MENU
             </div>
+        </div>
+        <div ng-show="store.tagsString.length" class="row description">
+            <div class="col">
+                {{store.tagsString}}
+            </div>
+        </div>
+        <div class="row divider">
+            <div class="col col-center">
+                LOCALES
+            </div>
+        </div>
+        <div ng-repeat="location in store.locations">
             <div class="row description">
                 <div class="col">
                     {{location.streets}}
                 </div>
             </div>
         </div>
-
-
-
         <div ng-if="store.menu.length" class="row divider">
             <div class="col col-center">
                 MEN&Uacute;
