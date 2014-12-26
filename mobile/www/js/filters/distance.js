@@ -14,7 +14,7 @@
                 return parseFloat(km).toFixed(1) + ' km';
             }
             if(value)
-                return value.toString() + ' m';
+                return parseInt(value).toString() + ' m';
             return '';
         };
     }
