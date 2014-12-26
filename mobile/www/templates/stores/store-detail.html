@@ -5,9 +5,8 @@
                 <img src="data:image/{{store.logoExtension}};base64,{{store.logoBase64}}"  height="50px" width="50px" />
             </div>
             <div class="col-80">
-                <h4>{{store.name}}</h4>
-                <h5 style="font-size:10px">{{store.url}}</h5>
-                <h5 style="font-size:10px">{{store.email}}</h5>
+                <h4>{{store.restaurantName}}</h4>
+                <h5 style="font-size:10px">{{store.restaurantUrl}}</h5>
             </div>
         </div>
         <div ng-show="store.tagsString.length" class="row divider">
@@ -20,26 +19,24 @@
                 {{store.tagsString}}
             </div>
         </div>
-        <div class="row divider">
+        <div ng-show="store.restaurantDescription.length" class="row divider">
             <div class="col col-center">
-                LOCALES
+                DESCRIPCI&Oacute;n
             </div>
         </div>
-        <div ng-repeat="location in store.locations">
-            <div class="row description">
-                <div class="col">
-                    {{location.streets}}
-                </div>
-            </div>
-        </div>
-        <div ng-if="store.menu.length" class="row divider">
-            <div class="col col-center">
-                MEN&Uacute;
-            </div>
-        </div>
-        <div ng-if="store.menu.length" class="row description">
+        <div ng-show="store.restaurantDescription.length" class="row description">
             <div class="col">
-                {{store.menu}}
+                {{store.restaurantDescription}}
+            </div>
+        </div>
+        <div ng-show="store.streets.length" class="row divider">
+            <div class="col col-center">
+                DIRECCI&Oacute;N
+            </div>
+        </div>
+        <div ng-show="store.streets.length" class="row description">
+            <div class="col">
+                {{store.streets}}
             </div>
         </div>
         <div class="row" style="height: 250px">
@@ -49,26 +46,26 @@
     <ion-footer-bar class="action-buttons-footer">
         <div class="row action-buttons">
             <div class="col">
-                <div class="fab red">
+                <a href="tel:{{store.phone}}" class="fab red">
                     <core-icon icon="" role="img">
                         <i class="icon ion-android-call"></i>
                     </core-icon>
-                </div>
+                </a>
             </div>
             <div class="col">
-                <div class="fab red">
+                <a href="#/tab/storeMap/{{store.latitude}}/{{store.longitude}}" class="fab red">
                     <core-icon icon="" role="img">
                         <i class="icon ion-location"></i>
                     </core-icon>
-                </div>
+                </a>
             </div>
-            <div class="col">
-                <div class="fab red">
-                    <core-icon icon="" role="img">
-                        <i class="icon ion-chatbox-working"></i>
-                    </core-icon>
-                </div>
-            </div>
+            <!--<div class="col">-->
+                <!--<div class="fab red">-->
+                    <!--<core-icon icon="" role="img">-->
+                        <!--<i class="icon ion-chatbox-working"></i>-->
+                    <!--</core-icon>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </ion-footer-bar>
 </ion-view>

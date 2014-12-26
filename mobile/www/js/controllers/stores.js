@@ -1,17 +1,28 @@
 angular.module('todayMenu')
 
-    .controller('StoresCtrl', function($scope,$rootScope, Stores, $log) {
+    .controller('StoresCtrl', function($scope,$rootScope, Stores, $cordovaGeolocation, $log) {
         const pageSize = 10;
         var pageCounter = 0;
 
         $rootScope.hideTabs = false;
         $rootScope.hideFilter = true;
 
+        var posOptions = {timeout: 30000, enableHighAccuracy: false};
 
-        Stores.all(pageCounter,pageSize).then(function(data){
-            $scope.stores = processData(data);
-            $scope.moreDataCanBeLoaded = (data.length == pageSize);
-        });
+        $cordovaGeolocation
+            .getCurrentPosition(posOptions)
+            .then(function (position) {
+                var lat  = position.coords.latitude
+                var long = position.coords.longitude
+
+                Stores.all(pageCounter,pageSize, lat, long).then(function(data){
+                    $scope.stores = processData(data);
+                    $log.info($scope.stores);
+                    $scope.moreDataCanBeLoaded = (data.length == pageSize);
+                });
+            }, function(err) {
+                // error
+            });
 
 
 
@@ -45,28 +56,6 @@ angular.module('todayMenu')
             );
         };
 
-
-        var options = {
-            frequency : 1000,
-            timeout : 30000,
-            enableHighAccuracy: true
-        };
-
-//        $cordovaGeolocation
-//            .getCurrentPosition(options)
-//            .then(function (position) {
-//                var lat  = position.coords.latitude
-//                var long = position.coords.longitude
-//
-//                var myPos = new google.maps.LatLng(lat, long);
-//
-//                _.map($scope.stores, function(store){
-//                    var myLatlng = new google.maps.LatLng(store.location.lat,store.location.long);
-//                    var distance = google.maps.geometry.spherical.computeDistanceBetween(myLatlng, myPos);
-//                    store.distanceTo = Math.ceil(distance);
-//                });
-//            }, function(err) {
-//            });
     })
 
     .controller('StoreDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $log) {

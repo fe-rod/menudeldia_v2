@@ -18,12 +18,18 @@ angular
         return service;
 
 
-        function all(start,length){
+        function all(start,length, latitude, longitude){
             var deferred = $q.defer();
             if(start == null && length == null)
                 deferred.reject("Debe ingresar un valor de inincio y paginado");
 
-            var url = "http://localhost:42479/api/restaurants/" + start + "/" + length;
+            var url = "http://localhost:42479/api/restaurants/stores/";
+
+            if (latitude != null && longitude != null) {
+                url += latitude + "/" + longitude + "/";
+            }
+
+            url += start + "/" + length;
 
             //call webapi service
             $http.get(url)
@@ -39,7 +45,7 @@ angular
 
         function getById(id){
             var deferred = $q.defer();
-            var url = "http://localhost:42479/api/restaurants/"+id;
+            var url = "http://localhost:42479/api/restaurants/store/"+id;
 
             //call webapi service
             $http.get(url)

@@ -91,7 +91,7 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
           }
       })
       .state('tab.storeMap', {
-          url: '/storeMap/:storeId',
+          url: '/storeMap/:latitude/:longitude',
           views: {
               'tab-stores': {
                   templateUrl: 'templates/map/map.html',

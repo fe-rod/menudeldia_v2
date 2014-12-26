@@ -28,6 +28,27 @@
                 {{menu.ingredients}}
             </div>
         </div>
+        <div ng-show="menu.nearestLocation" class="row divider">
+            <div class="col col-center">
+                {{menu.nearestLocation.restaurantName | uppercase}}
+            </div>
+        </div>
+        <div ng-show="menu.nearestLocation" class="row description">
+            <div class="col col-33">
+                Tel&eacute;fono
+            </div>
+            <div class="col col-75">
+                {{menu.nearestLocation.phone}}
+            </div>
+        </div>
+        <div ng-show="menu.nearestLocation" class="row description">
+            <div class="col col-33">
+                Direcci&oacute;n
+            </div>
+            <div class="col col-75">
+                {{menu.nearestLocation.streets}}
+            </div>
+        </div>
         <div class="row" style="height: 250px">
         </div>
     </ion-content>
