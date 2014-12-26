@@ -69,7 +69,7 @@
 }
 
 .menuDetail .header-title .col-75 {
-    padding: 0 0 0 15px;
+    padding: 0 8px 0 15px;
 }
 
 .menuDetail .header-title h4.menu-title{
@@ -142,4 +142,38 @@
 
 .favoriteMenu .icon.active {
     color: #e4c613;
+}
+
+.secondary-action{
+    padding: 0 15px 0 0;
+}
+
+.secondary-action a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #444;
+}
+
+.platform-android .secondary-action a {
+    color: #fff;
+}
+
+.myProfile .icon {
+    color: #474747;
+}
+
+.commentsForm .title , .commentsForm span{
+    color: #444;
+}
+
+.commentsForm textarea{
+    height: 150px;
+}
+
+.commentsForm .button{
+
+}
+
+.platform-android .commentsForm .title, .platform-android .commentsForm span{
+    color: #fff;
 }
