@@ -68,6 +68,15 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
               }
           }
       })
+      .state('tab.restaurants', {
+          url: '/stores/restaurants',
+          views: {
+              'tab-stores': {
+                  templateUrl: 'templates/restaurants/tab-restaurants.html',
+                  controller: 'RestaurantsCtrl'
+              }
+          }
+      })
       .state('tab.store-detail', {
           url: '/store/:storeId/:distance',
           views: {
@@ -78,6 +87,18 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
           },
           resolve: {
               data: function (Stores,$stateParams) { return Stores.getById($stateParams.storeId); }
+          }
+      })
+      .state('tab.restaurant-detail', {
+          url: '/stores/restaurant/:restaurantId',
+          views: {
+              'tab-stores': {
+                  templateUrl: 'templates/restaurants/restaurant-detail.html',
+                  controller: 'StoreDetailCtrl'
+              }
+          },
+          resolve: {
+              data: function (Stores,$stateParams) { return Stores.getRestaurantById($stateParams.restaurantId); }
           }
       })
 
@@ -99,7 +120,15 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
               }
           }
       })
-
+      .state('tab.restaurantMap', {
+          url: '/restaurantMap/:latitude/:longitude',
+          views: {
+              'tab-stores': {
+                  templateUrl: 'templates/map/map.html',
+                  controller: 'MapCtrl'
+              }
+          }
+      })
       .state('tab.account', {
           url: '/account',
           views: {

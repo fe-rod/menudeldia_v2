@@ -46,9 +46,8 @@ angular.module('todayMenu')
             );
         };
     })
-    .controller('MenuDetailCtrl', function($scope, $rootScope, $stateParams, Menus, data, $log) {
+    .controller('MenuDetailCtrl', function($scope, $rootScope, $stateParams, Menus, data) {
         $scope.menu = data;
-        $log.info(data);
         $rootScope.hideTabs = true;
         $rootScope.hideFilter = true;
     });
