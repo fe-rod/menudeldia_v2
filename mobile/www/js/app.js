@@ -142,4 +142,11 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/menus');
 
-});
+})
+.constant('appConfig',
+    {
+        ver: '1.0.0',
+        //apiUrl: "http://localhost:42479/api/"
+        apiUrl: "http://mddservice.azurewebsites.net/api/"
+    }
+);

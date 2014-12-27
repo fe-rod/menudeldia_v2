@@ -5,9 +5,9 @@
         .module('todayMenu')
         .factory('Menus', menus);
 
-    menus.$inject = ['$q','$http'];
+    menus.$inject = ['$q','$http', 'appConfig'];
 
-    function menus($q, $http) {
+    function menus($q, $http, appConfig) {
         var service = {
             all: all,
             get: get
@@ -21,7 +21,7 @@
             if(start == null && length == null)
                 deferred.reject("Debe ingresar un valor de inincio y paginado");
 
-            var url = "http://localhost:42479/api/menus";
+            var url = appConfig.apiUrl + "menus";
             if (latitude != null && longitude != null && radius != null) {
                 url += "/" + latitude + "/" + longitude + "/" + radius;
             }
@@ -45,7 +45,7 @@
 
         function get(id) {
             var deferred = $q.defer();
-            var url = "http://localhost:42479/api/menus/"+id;
+            var url = appConfig.apiUrl + "menus/"+id;
 
             //call webapi service
             $http.get(url)

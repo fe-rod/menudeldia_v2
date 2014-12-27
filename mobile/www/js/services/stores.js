@@ -6,9 +6,9 @@ angular
     .module('todayMenu')
     .factory('Stores',stores );
 
-    stores.$inject = ['$q','$http'];
+    stores.$inject = ['$q','$http', 'appConfig'];
 
-    function stores($q, $http) {
+    function stores($q, $http, appConfig) {
 
         var service = {
             all: all,
@@ -25,7 +25,7 @@ angular
             if(start == null && length == null)
                 deferred.reject("Debe ingresar un valor de inincio y paginado");
 
-            var url = "http://localhost:42479/api/restaurants/stores/";
+            var url = appConfig.apiUrl + "restaurants/stores/";
 
             if (latitude != null && longitude != null) {
                 url += latitude + "/" + longitude + "/";
@@ -50,7 +50,7 @@ angular
             if(start == null && length == null)
                 deferred.reject("Debe ingresar un valor de inincio y paginado");
 
-            var url = "http://localhost:42479/api/restaurants/" + start + "/" + length;
+            var url = appConfig.apiUrl + "restaurants/" + start + "/" + length;
 
             //call webapi service
             $http.get(url)
@@ -66,7 +66,7 @@ angular
 
         function getById(id){
             var deferred = $q.defer();
-            var url = "http://localhost:42479/api/restaurants/store/"+id;
+            var url = appConfig.apiUrl + "restaurants/store/"+id;
 
             //call webapi service
             $http.get(url)
@@ -82,7 +82,7 @@ angular
 
         function getRestaurantById(id){
             var deferred = $q.defer();
-            var url = "http://localhost:42479/api/restaurants/"+id;
+            var url = appConfig.apiUrl + "restaurants/"+id;
 
             //call webapi service
             $http.get(url)
