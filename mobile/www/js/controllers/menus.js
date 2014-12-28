@@ -1,12 +1,14 @@
 angular.module('todayMenu')
 
-    .controller('MenusCtrl', function($scope, $rootScope, $stateParams, Menus, $ionicPopover, $cordovaGeolocation) {
+    .controller('MenusCtrl', function($scope, $rootScope, $stateParams, Menus, $ionicPopover, $cordovaGeolocation, $ionicLoading) {
         const pageSize = 10;
         var pageCounter = 0;
 
         $rootScope.hideTabs = false;
         $rootScope.hideFilter = false;
 
+
+        $ionicLoading.show({delay: 200});
 
         var posOptions = {timeout: 30000, enableHighAccuracy: false};
 
@@ -19,6 +21,7 @@ angular.module('todayMenu')
                 Menus.all(pageCounter,pageSize, lat, long).then(function(data){
                     $scope.menus = data;
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
+                    $ionicLoading.hide();
                 });
             }, function(err) {
                 // error
@@ -46,8 +49,11 @@ angular.module('todayMenu')
             );
         };
     })
-    .controller('MenuDetailCtrl', function($scope, $rootScope, $stateParams, Menus, data) {
+    .controller('MenuDetailCtrl', function($scope, $rootScope, $stateParams, Menus, data, $ionicLoading) {
+
         $scope.menu = data;
+        $ionicLoading.hide();
+
         $rootScope.hideTabs = true;
         $rootScope.hideFilter = true;
     });

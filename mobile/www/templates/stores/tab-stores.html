@@ -14,15 +14,17 @@
                     <div class="col-90">
                         {{store.restaurantName}}
                     </div>
+                    <div class="col-33">
+                        <p ng-show="store.distance>=0">
+                            {{store.distance | distance}}
+                        </p>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-90">
                         <p>
                             {{store.tagsString}}
                         </p>
-                        <span ng-show="store.distance>=0">
-                            {{store.distance | distance}}
-                        </span>
                     </div>
                 </div>
 

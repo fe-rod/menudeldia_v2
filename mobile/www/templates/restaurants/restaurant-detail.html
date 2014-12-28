@@ -1,5 +1,5 @@
 <ion-view view-title="{{store.name}}">
-    <ion-content class="menuDetail">
+    <ion-content class="menuDetail" scroll="true">
         <div class="row store-title">
             <div class="col-20">
                 <img src="data:image/{{store.logoExtension}};base64,{{store.logoBase64}}"  height="50px" width="50px" />
@@ -21,7 +21,7 @@
         </div>
         <div ng-show="store.description.length" class="row divider">
             <div class="col col-center">
-                DESCRIPCI&Oacute;n
+                DESCRIPCI&Oacute;N
             </div>
         </div>
         <div ng-show="store.description.length" class="row description">

@@ -1,20 +1,21 @@
 angular.module('todayMenu')
 
-    .controller('RestaurantsCtrl', function($scope,$rootScope, Stores) {
+    .controller('RestaurantsCtrl', function($scope,$rootScope, Stores, $ionicLoading) {
         const pageSize = 10;
         var pageCounter = 0;
 
         $rootScope.hideTabs = false;
         $rootScope.hideFilter = true;
 
+        $ionicLoading.show({delay: 200});
 
         Stores.allRestaurants(pageCounter,pageSize).then(function(data){
             $scope.stores = processData(data);
+            $ionicLoading.hide();
             $scope.moreDataCanBeLoaded = (data.length == pageSize);
         });
 
         function processData(data) {
-            /*transformations*/
             var temp = data;
             temp = _.map(temp, function (obj) {
                 obj = _.extend(obj, {
@@ -45,9 +46,11 @@ angular.module('todayMenu')
 
     })
 
-    .controller('RestaurantDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data) {
+    .controller('RestaurantDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $ionicLoading) {
         $rootScope.hideTabs = true;
         $rootScope.hideFilter = true;
+
+        $ionicLoading.hide();
 
         data = _.extend(data, {
             tagsString: _.reduce(data.tags,function(mem,item){
