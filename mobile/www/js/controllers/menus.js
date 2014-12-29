@@ -33,13 +33,12 @@ angular.module('todayMenu')
         });
 
         $scope.loadMore = function() {
-
             pageCounter = pageCounter + 1;
             Menus.all(pageCounter,10).then(
                 function(data){
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
                     if(data.length){
-                        $scope.menus.push(data);
+                        $scope.menus= $scope.menus.concat(data);
                         $scope.$broadcast('scroll.infiniteScrollComplete')
                     }
                 }

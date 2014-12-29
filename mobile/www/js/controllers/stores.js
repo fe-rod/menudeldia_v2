@@ -49,7 +49,7 @@ angular.module('todayMenu')
                 function(data){
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
                     if(data.length){
-                        $scope.stores.push(data);
+                        $scope.stores = $scope.stores.concat(data);
                         $scope.$broadcast('scroll.infiniteScrollComplete')
                     }
                 }
