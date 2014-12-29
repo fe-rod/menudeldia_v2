@@ -1,8 +1,6 @@
 angular.module('todayMenu')
 
-    .controller('MapCtrl', function($scope, $stateParams, $ionicLoading, $compile, Stores) {
-
-        //$scope.store = Stores.getById($stateParams.storeId);
+    .controller('MapCtrl', function($scope, $stateParams, $ionicLoading, $compile) {
 
         function initialize() {
             var myLatlng = new google.maps.LatLng($stateParams.latitude,$stateParams.longitude);

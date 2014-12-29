@@ -177,3 +177,18 @@
 .platform-android .commentsForm .title, .platform-android .commentsForm span{
     color: #fff;
 }
+
+.locationDetail a{
+    text-decoration: none;
+    color: #444;
+}
+
+.locationDetail .icon{
+    font-size: 35px;
+    color: #d23f31;
+}
+
+.locationDetail .phone .icon {
+   font-size: 14px;
+    padding-right: 10px;
+}

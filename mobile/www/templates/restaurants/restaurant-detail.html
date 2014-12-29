@@ -1,0 +1,49 @@
+<ion-view view-title="{{store.name}}">
+    <ion-content class="menuDetail" scroll="true">
+        <div class="row store-title">
+            <div class="col-20">
+                <img src="data:image/{{store.logoExtension}};base64,{{store.logoBase64}}"  height="50px" width="50px" />
+            </div>
+            <div class="col-80">
+                <h4>{{store.name}}</h4>
+                <h5 style="font-size:10px">{{store.url}}</h5>
+            </div>
+        </div>
+        <div ng-show="store.tagsString.length" class="row divider">
+            <div class="col col-center">
+                MENU
+            </div>
+        </div>
+        <div ng-show="store.tagsString.length" class="row description">
+            <div class="col">
+                {{store.tagsString}}
+            </div>
+        </div>
+        <div ng-show="store.description.length" class="row divider">
+            <div class="col col-center">
+                DESCRIPCI&Oacute;N
+            </div>
+        </div>
+        <div ng-show="store.description.length" class="row description">
+            <div class="col">
+                {{store.description}}
+            </div>
+        </div>
+        <div ng-show="store.locations.length" class="row divider">
+            <div class="col col-center">
+                LOCALES
+            </div>
+        </div>
+        <div ng-repeat="loc in store.locations" class="row description locationDetail">
+            <div class="col col-50 col-center">
+                {{loc.streets}}
+            </div>
+            <div class="col col-center phone">
+                <a href="tel:{{loc.phone}}"><i class="icon ion-android-call"></i>{{loc.phone}}</a>
+            </div>
+            <div class="col col-10 col-center">
+                <a href="#/tab/restaurantMap/{{loc.latitude}}/{{loc.longitude}}"><i class="icon ion-location"></i></a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

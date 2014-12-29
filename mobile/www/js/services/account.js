@@ -1,6 +1,6 @@
 angular.module('todayMenu')
 
-    .factory('Account', function(Helpers) {
+    .factory('Account', function(Helpers, appConfig) {
 
         var service = {
             saveComment: saveComment,
@@ -8,11 +8,11 @@ angular.module('todayMenu')
         }
 
         function saveComment(comment){
-            return Helpers.postData('', {comment: comment});
+            return Helpers.postData(appConfig.apiUrl + '', {comment: comment});
         }
 
         function saveSuggestion(suggestion){
-            return Helpers.postData('', {suggestion: suggestion});
+            return Helpers.postData(appConfig.apiUrl + '', {suggestion: suggestion});
         }
 
         return service;

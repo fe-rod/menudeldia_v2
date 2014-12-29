@@ -56,7 +56,10 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
               }
           },
           resolve: {
-              data: function (Menus,$stateParams) { return Menus.get($stateParams.menuId); }
+              data: function (Menus,$stateParams, $ionicLoading) {
+                  $ionicLoading.show({delay: 500});
+                  return Menus.get($stateParams.menuId);
+              }
           }
       })
       .state('tab.stores', {
@@ -65,6 +68,15 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
               'tab-stores': {
                   templateUrl: 'templates/stores/tab-stores.html',
                   controller: 'StoresCtrl'
+              }
+          }
+      })
+      .state('tab.restaurants', {
+          url: '/stores/restaurants',
+          views: {
+              'tab-stores': {
+                  templateUrl: 'templates/restaurants/tab-restaurants.html',
+                  controller: 'RestaurantsCtrl'
               }
           }
       })
@@ -77,7 +89,23 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
               }
           },
           resolve: {
-              data: function (Stores,$stateParams) { return Stores.getById($stateParams.storeId); }
+              data: function (Stores,$stateParams, $ionicLoading) {
+                  $ionicLoading.show({delay: 500});
+                  return Stores.getById($stateParams.storeId); }
+          }
+      })
+      .state('tab.restaurant-detail', {
+          url: '/stores/restaurant/:restaurantId',
+          views: {
+              'tab-stores': {
+                  templateUrl: 'templates/restaurants/restaurant-detail.html',
+                  controller: 'StoreDetailCtrl'
+              }
+          },
+          resolve: {
+              data: function (Stores,$stateParams, $ionicLoading) {
+                  $ionicLoading.show({delay: 500});
+                  return Stores.getRestaurantById($stateParams.restaurantId); }
           }
       })
 
@@ -99,7 +127,15 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
               }
           }
       })
-
+      .state('tab.restaurantMap', {
+          url: '/restaurantMap/:latitude/:longitude',
+          views: {
+              'tab-stores': {
+                  templateUrl: 'templates/map/map.html',
+                  controller: 'MapCtrl'
+              }
+          }
+      })
       .state('tab.account', {
           url: '/account',
           views: {
@@ -113,4 +149,11 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/menus');
 
-});
+})
+.constant('appConfig',
+    {
+        ver: '1.0.0',
+        //apiUrl: "http://localhost:42479/api/"
+        apiUrl: "http://mddservice.azurewebsites.net/api/"
+    }
+);
