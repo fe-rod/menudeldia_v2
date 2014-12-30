@@ -9,7 +9,7 @@ angular.module('todayMenu')
 
         $ionicLoading.show({delay:200});
 
-        var posOptions = {timeout: 30000, enableHighAccuracy: false};
+        var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000 };
 
         $cordovaGeolocation
             .getCurrentPosition(posOptions)
@@ -21,9 +21,11 @@ angular.module('todayMenu')
                     $scope.stores = processData(data);
                     $ionicLoading.hide();
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
+                },function(){
+                    $ionicLoading.hide();
                 });
             }, function(err) {
-                // error
+                $ionicLoading.hide();
             });
 
 
@@ -60,11 +62,9 @@ angular.module('todayMenu')
 
     })
 
-    .controller('StoreDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $ionicLoading) {
+    .controller('StoreDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data) {
         $rootScope.hideTabs = true;
         $rootScope.hideFilter = true;
-
-        $ionicLoading.hide();
 
         data = _.extend(data, {
             tagsString: _.reduce(data.tags,function(mem,item){

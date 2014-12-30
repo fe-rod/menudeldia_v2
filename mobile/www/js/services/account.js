@@ -7,12 +7,12 @@ angular.module('todayMenu')
             saveSuggestion: saveSuggestion
         }
 
-        function saveComment(comment){
-            return Helpers.postData(appConfig.apiUrl + '', {comment: comment});
+        function saveComment(comment, identif){
+            return Helpers.postData(appConfig.apiUrl + 'appcomment', {message: comment, uuid: identif});
         }
 
-        function saveSuggestion(suggestion){
-            return Helpers.postData(appConfig.apiUrl + '', {suggestion: suggestion});
+        function saveSuggestion(suggestion, identif){
+            return Helpers.postData(appConfig.apiUrl + 'suggestions', {message: suggestion, uuid: identif});
         }
 
         return service;

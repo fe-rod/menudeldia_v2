@@ -58,7 +58,10 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
           resolve: {
               data: function (Menus,$stateParams, $ionicLoading) {
                   $ionicLoading.show({delay: 500});
-                  return Menus.get($stateParams.menuId);
+                  return Menus.get($stateParams.menuId).then(function(data){
+                      $ionicLoading.hide();
+                      return data;
+                  });
               }
           }
       })
@@ -91,7 +94,10 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
           resolve: {
               data: function (Stores,$stateParams, $ionicLoading) {
                   $ionicLoading.show({delay: 500});
-                  return Stores.getById($stateParams.storeId); }
+                  return Stores.getById($stateParams.storeId).then(function(data){
+                      $ionicLoading.hide();
+                      return data;
+                  }); }
           }
       })
       .state('tab.restaurant-detail', {
@@ -105,7 +111,10 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
           resolve: {
               data: function (Stores,$stateParams, $ionicLoading) {
                   $ionicLoading.show({delay: 500});
-                  return Stores.getRestaurantById($stateParams.restaurantId); }
+                  return Stores.getRestaurantById($stateParams.restaurantId).then(function(data){
+                      $ionicLoading.hide();
+                      return data;
+                  }); }
           }
       })
 

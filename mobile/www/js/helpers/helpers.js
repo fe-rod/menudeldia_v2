@@ -1,6 +1,6 @@
 angular.module('todayMenu')
 
-    .factory('Helpers', function() {
+    .factory('Helpers', function($q, $http) {
 
         var service = {
             postData: postData,
