@@ -7,7 +7,7 @@ angular.module('todayMenu')
         $rootScope.hideTabs = false;
         $rootScope.hideFilter = true;
 
-        $ionicLoading.show({delay:200});
+        $ionicLoading.show({delay:200, template: "Cargando locales cercanos..."});
 
         var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000 };
 
@@ -22,6 +22,8 @@ angular.module('todayMenu')
                     $ionicLoading.hide();
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
                 },function(){
+                    $scope.geolocError = true;
+                    $scope.gpsError = err.code + ' - ' + err.message;
                     $ionicLoading.hide();
                 });
             }, function(err) {
@@ -59,6 +61,31 @@ angular.module('todayMenu')
                 }
             );
         };
+
+        $scope.refreshStores = function(){
+            var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
+
+            $cordovaGeolocation
+                .getCurrentPosition(posOptions)
+                .then(function (position) {
+                    var lat  = position.coords.latitude
+                    var long = position.coords.longitude
+
+                    Stores.all(pageCounter,pageSize, lat, long).then(function(data){
+                        $scope.stores = processData(data);
+                        $scope.moreDataCanBeLoaded = (data.length == pageSize);
+                    },function(){
+                    });
+                }, function(err) {
+                    //todo:mostrar mensaje indicando que no anda la geolocalizacion
+                    $scope.geolocError = true;
+                    $scope.gpsError = err.code + ' - ' + err.message;
+                })
+                .finally(function() {
+                    // Stop the ion-refresher from spinning
+                    $scope.$broadcast('scroll.refreshComplete');
+                });
+        }
 
     })
 

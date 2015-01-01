@@ -6,7 +6,11 @@
             </div>
         </div>
     </ion-nav-buttons>
-    <ion-content class="has-header" has-bouncing="true">
+    <ion-content class="has-header" has-bouncing="true" ng-hide="geolocError">
+        <ion-refresher
+                pulling-text="Desliza hacia abajo para refrescar.."
+                on-refresh="refreshStores()">
+        </ion-refresher>
         <ion-list can-swipe="true">
             <ion-item ng-repeat="store in stores" class="item item-text-wrap item-avatar" href="#/tab/store/{{store.id}}/{{store.distanceTo}}">
                 <img src="data:image/{{store.logoExtension}};base64,{{store.logoBase64}}" />
@@ -30,6 +34,11 @@
 
             </ion-item>
         </ion-list>
+        <div class="row" ng-show="geolocError">
+            <div class="col">
+                No se ha podido encontrar tu ubicaci&oacute;n. ({{gpsError}})
+            </div>
+        </div>
         <ion-infinite-scroll
                 ng-if="moreDataCanBeLoaded"
                 on-infinite="loadMore()"

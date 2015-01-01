@@ -1,16 +1,10 @@
 <ion-view title="Menú del día">
     <ion-content class="has-header" has-bouncing="true">
-        <!--<div id="search-box" class="bar bar-header item-input-inset">-->
-        <!--<div class="item-input-wrapper">-->
-        <!--<i class="icon ion-ios7-search placeholder-icon"></i>-->
-        <!--<input type="search" placeholder="Search" ng-model="data.searchQuery">-->
-        <!--<i class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i>-->
-        <!--</div>-->
-        <!--<button class="button button-clear">-->
-        <!--Cancel-->
-        <!--</button>-->
-        <!--</div>-->
-        <ion-list can-swipe="true">
+        <ion-refresher
+                pulling-text="Desliza hacia abajo para refrescar.."
+                on-refresh="refreshMenu()">
+        </ion-refresher>
+        <ion-list can-swipe="true" ng-hide="geolocError">
             <ion-item ng-repeat="menu in menus" class="item item-text-wrap item-avatar menuList" href="#/tab/menu/{{menu.id}}">
                 <img src="data:image/{{menu.logo.logoExtension}};base64,{{menu.logo.logoBase64}}" />
                 <div class="row">
@@ -36,7 +30,11 @@
                 <!--</ion-option-button>-->
             </ion-item>
         </ion-list>
-
+        <div class="row" ng-show="geolocError">
+            <div class="col">
+                No se ha podido encontrar tu ubicaci&oacute;n. ({{gpsError}})
+            </div>
+        </div>
         <ion-infinite-scroll
                 ng-if="moreDataCanBeLoaded"
                 on-infinite="loadMore()"

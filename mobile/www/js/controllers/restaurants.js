@@ -46,6 +46,19 @@ angular.module('todayMenu')
             );
         };
 
+        $scope.refreshRestaurants = function(){
+            Stores.allRestaurants(pageCounter,pageSize).then(function(data){
+                $scope.stores = processData(data);
+                $scope.moreDataCanBeLoaded = (data.length == pageSize);
+            },function(){
+                $ionicLoading.hide();
+            })
+            .finally(function() {
+                // Stop the ion-refresher from spinning
+                $scope.$broadcast('scroll.refreshComplete');
+            });
+        }
+
     })
 
     .controller('RestaurantDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $ionicLoading) {
