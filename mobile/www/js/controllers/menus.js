@@ -12,14 +12,15 @@ angular.module('todayMenu')
         $ionicLoading.show({delay: 200, template: "Cargando menús cercanos..."});
 
         var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
+        var latitude, longitude;
 
         $cordovaGeolocation
             .getCurrentPosition(posOptions)
             .then(function (position) {
-                var lat  = position.coords.latitude
-                var long = position.coords.longitude
+                latitude = position.coords.latitude
+                longitude = position.coords.longitude
 
-                Menus.all(pageCounter,pageSize, lat, long).then(function(data){
+                Menus.all(pageCounter,pageSize, latitude, longitude).then(function(data){
                     $scope.menus = data;
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
                     $ionicLoading.hide();
@@ -44,11 +45,11 @@ angular.module('todayMenu')
         $scope.loadMore = function() {
 
             pageCounter = pageCounter + 1;
-            Menus.all(pageCounter,10).then(
+            Menus.all(pageCounter,10, latitude, longitude).then(
                 function(data){
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
                     if(data.length){
-                        $scope.menus.push(data);
+                        $scope.menus= $scope.menus.concat(data);
                         $scope.$broadcast('scroll.infiniteScrollComplete')
                     }
                 }
@@ -61,10 +62,10 @@ angular.module('todayMenu')
             $cordovaGeolocation
                 .getCurrentPosition(posOptions)
                 .then(function (position) {
-                    var lat  = position.coords.latitude
-                    var long = position.coords.longitude
+                    latitude  = position.coords.latitude
+                    longitude = position.coords.longitude
 
-                    Menus.all(pageCounter,pageSize, lat, long).then(function(data){
+                    Menus.all(pageCounter,pageSize, latitude, longitude).then(function(data){
                         $scope.menus = data;
                         $scope.moreDataCanBeLoaded = (data.length == pageSize);
                     },function(){
