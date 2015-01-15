@@ -13,6 +13,8 @@ angular.module('todayMenu')
             $scope.stores = processData(data);
             $ionicLoading.hide();
             $scope.moreDataCanBeLoaded = (data.length == pageSize);
+        },function(){
+            $ionicLoading.hide();
         });
 
         function processData(data) {

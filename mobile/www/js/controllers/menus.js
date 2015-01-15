@@ -10,7 +10,7 @@ angular.module('todayMenu')
 
         $ionicLoading.show({delay: 200});
 
-        var posOptions = {timeout: 30000, enableHighAccuracy: false};
+        var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
 
         $cordovaGeolocation
             .getCurrentPosition(posOptions)
@@ -22,9 +22,12 @@ angular.module('todayMenu')
                     $scope.menus = data;
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
                     $ionicLoading.hide();
+                },function(){
+                    $ionicLoading.hide();
                 });
             }, function(err) {
-                // error
+                //todo:mostrar mensaje indicando que no anda la geolocalizacion
+                $ionicLoading.hide();
             });
 
         $scope.favorite = function(menu){

@@ -5,16 +5,16 @@
     height: 35px;
 }
 
-.platform-android .has-tabs-top{
-    top: 75px;
-}
+/*.platform-android .has-tabs-top{*/
+    /*top: 75px;*/
+/*}*/
 
 .platform-android .tabs-striped .tabs, .platform-android .tabs-striped .tabs {
-    background-color: #2196F3;
+    background-color: #F44336;
 }
 
 [nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
-    background-color: #2196F3;
+    background-color: #F44336;
 }
 
 .platform-android .tabs-striped .tabs, .platform-android .tabs-striped .tabs a {
@@ -26,13 +26,13 @@
 }
 
 .platform-android .bar-blue {
-    background-color: #2196F3;
-    border-color: #2196F3;
+    background-color: #F44336;
+    border-color: #F44336;
 }
 
 .platform-android .bar-stable {
-    background-color: #2196F3;
-    border-color: #2196F3;
+    background-color: #F44336;
+    border-color: #F44336;
 }
 
 .platform-android .bar-blue .title.title-left{
@@ -191,4 +191,10 @@
 .locationDetail .phone .icon {
    font-size: 14px;
     padding-right: 10px;
+}
+
+.platform-ios ion-tabs.tabs-color-active-positive .tab-item.tab-item-active,
+.platform-ios ion-tabs.tabs-color-active-positive .tab-item.active,
+.platform-ios ion-tabs.tabs-color-active-positive .tab-item.activated{
+    color: #F44336;
 }
