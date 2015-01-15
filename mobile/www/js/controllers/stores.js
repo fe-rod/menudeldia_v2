@@ -7,21 +7,25 @@ angular.module('todayMenu')
         $rootScope.hideTabs = false;
         $rootScope.hideFilter = true;
 
-        $ionicLoading.show({delay:200});
+        $ionicLoading.show({delay:200, template: "Cargando locales cercanos..."});
 
         var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000 };
+
+        var latitude, longitude;
 
         $cordovaGeolocation
             .getCurrentPosition(posOptions)
             .then(function (position) {
-                var lat  = position.coords.latitude
-                var long = position.coords.longitude
+                latitude  = position.coords.latitude
+                longitude = position.coords.longitude
 
-                Stores.all(pageCounter,pageSize, lat, long).then(function(data){
+                Stores.all(pageCounter,pageSize, latitude, longitude).then(function(data){
                     $scope.stores = processData(data);
                     $ionicLoading.hide();
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
                 },function(){
+                    $scope.geolocError = true;
+                    $scope.gpsError = err.code + ' - ' + err.message;
                     $ionicLoading.hide();
                 });
             }, function(err) {
@@ -49,16 +53,42 @@ angular.module('todayMenu')
 
         $scope.loadMore = function() {
             pageCounter = pageCounter + 1;
-            Menus.all(pageCounter,10).then(
+            Menus.all(pageCounter,10, latitude, longitude).then(
                 function(data){
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
                     if(data.length){
-                        $scope.stores = $scope.stores.concat(data);
+                        $scope.stores= $scope.stores.concat(data);
                         $scope.$broadcast('scroll.infiniteScrollComplete')
                     }
                 }
             );
         };
+
+        $scope.refreshStores = function(){
+            var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
+            pageCounter = 0;
+            
+            $cordovaGeolocation
+                .getCurrentPosition(posOptions)
+                .then(function (position) {
+                    latitude  = position.coords.latitude
+                    longitude = position.coords.longitude
+
+                    Stores.all(pageCounter,pageSize, latitude, longitude).then(function(data){
+                        $scope.stores = processData(data);
+                        $scope.moreDataCanBeLoaded = (data.length == pageSize);
+                    },function(){
+                    });
+                }, function(err) {
+                    //todo:mostrar mensaje indicando que no anda la geolocalizacion
+                    $scope.geolocError = true;
+                    $scope.gpsError = err.code + ' - ' + err.message;
+                })
+                .finally(function() {
+                    // Stop the ion-refresher from spinning
+                    $scope.$broadcast('scroll.refreshComplete');
+                });
+        }
 
     })
 
