@@ -1,6 +1,6 @@
 angular.module('todayMenu')
 
-    .controller('MenusCtrl', function($scope, $rootScope, $stateParams, Menus, $ionicPopover, $cordovaGeolocation, $ionicLoading) {
+    .controller('MenusCtrl', function($scope, $rootScope, $stateParams, Menus, $ionicPopover, $cordovaGeolocation, $ionicLoading,$ionicPlatform) {
         const pageSize = 10;
         var pageCounter = 0;
 
@@ -14,27 +14,30 @@ angular.module('todayMenu')
         var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
         var latitude, longitude;
 
-        $cordovaGeolocation
-            .getCurrentPosition(posOptions)
-            .then(function (position) {
-                latitude = position.coords.latitude;
-                longitude = position.coords.longitude;
+        $ionicPlatform.ready(function() {
+            $cordovaGeolocation
+                .getCurrentPosition(posOptions)
+                .then(function (position) {
 
-                debugger;
-                Menus.all(pageCounter,pageSize, latitude, longitude).then(function(data){
-                    $scope.menus = data;
-                    $scope.moreDataCanBeLoaded = (data.length == pageSize);
-                    $ionicLoading.hide();
-                },function(){
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    Menus.all(pageCounter, pageSize, latitude, longitude).then(function (data) {
+                        debugger;
+                        $scope.menus = data;
+                        $scope.moreDataCanBeLoaded = (data.length == pageSize);
+                        $ionicLoading.hide();
+                    }, function () {
+
+                        $ionicLoading.hide();
+                    });
+                }, function (err) {
+                    debugger;
+                    //todo:mostrar mensaje indicando que no anda la geolocalizacion
+                    $scope.geolocError = true;
+                    $scope.gpsError = err.code + ' - ' + err.message;
                     $ionicLoading.hide();
                 });
-            }, function(err) {
-                //todo:mostrar mensaje indicando que no anda la geolocalizacion
-                $scope.geolocError = true;
-                $scope.gpsError = err.code + ' - ' + err.message;
-                $ionicLoading.hide();
-            });
-
+        });
         $scope.favorite = function(menu){
             menu.favorite = !menu.favorite;
         };
@@ -47,7 +50,6 @@ angular.module('todayMenu')
             pageCounter = pageCounter + 1;
             Menus.all(pageCounter,10, latitude, longitude).then(
                 function(data){
-                    debugger;
                     $scope.moreDataCanBeLoaded = (data.length == pageSize);
                     if(data.length){
                         $scope.menus= $scope.menus.concat(data);
@@ -61,6 +63,7 @@ angular.module('todayMenu')
             var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
             pageCounter = 0;
 
+            $ionicPlatform.ready(function() {
             $cordovaGeolocation
                 .getCurrentPosition(posOptions)
                 .then(function (position) {
@@ -80,6 +83,7 @@ angular.module('todayMenu')
             .finally(function() {
                 // Stop the ion-refresher from spinning
                 $scope.$broadcast('scroll.refreshComplete');
+            });
             });
         }
     })

@@ -17,7 +17,6 @@
 
         function all(start, length, latitude, longitude, radius) {
             var deferred = $q.defer();
-
             if(start == null && length == null)
                 deferred.reject("Debe ingresar un valor de inincio y paginado");
 
