@@ -18,21 +18,17 @@ angular.module('todayMenu')
             $cordovaGeolocation
                 .getCurrentPosition(posOptions)
                 .then(function (position) {
-
                     latitude = position.coords.latitude;
                     longitude = position.coords.longitude;
-                    Menus.all(pageCounter, pageSize, latitude, longitude).then(function (data) {
-                        debugger;
-                        $scope.menus = data;
-                        $scope.moreDataCanBeLoaded = (data.length == pageSize);
-                        $ionicLoading.hide();
-                    }, function () {
-
-                        $ionicLoading.hide();
-                    });
+                    Menus.all(pageCounter, pageSize, latitude, longitude)
+                        .then(function (data) {
+                            $scope.menus = data;
+                            $scope.moreDataCanBeLoaded = (data.length == pageSize);
+                            $ionicLoading.hide();
+                        }, function () {
+                            $ionicLoading.hide();
+                        });
                 }, function (err) {
-                    debugger;
-                    //todo:mostrar mensaje indicando que no anda la geolocalizacion
                     $scope.geolocError = true;
                     $scope.gpsError = err.code + ' - ' + err.message;
                     $ionicLoading.hide();
