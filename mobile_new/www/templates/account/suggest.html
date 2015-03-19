@@ -1,0 +1,22 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-stable commentsForm">
+        <h1 class="title">Sugerir un local</h1>
+        <div class="button button-clear" ng-click="suggestModal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content class="padding commentsForm" scroll="true">
+        <div class="row">
+            <div class="col">
+                <label class="item item-input">
+                    <textarea ng-model="suggestions.value" type="text" placeholder="¿Querés conocer el menú del día de algún local en especial? Envianos el nombre del local y su teléfono, y nos pondremos en contacto con ellos. Gracias!"></textarea>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-20"></div>
+            <div class="col">
+                <button class="button button-block matdesign-button raised grey" ng-click="sendSuggestions()">Enviar sugerencia</button>
+            </div>
+            <div class="col-20"></div>
+        </div>
+    </ion-content>
+</ion-modal-view>

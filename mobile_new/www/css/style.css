@@ -1,0 +1,200 @@
+/* Empty. Add your own CSS if you like */
+
+
+.platform-android .tabs{
+    height: 35px;
+}
+
+.platform-android .has-tabs-top{
+    top: 78px;
+}
+
+.platform-android .tabs-striped .tabs, .platform-android .tabs-striped .tabs {
+    background-color: #F44336;
+}
+
+[nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
+    background-color: #F44336;
+}
+
+.platform-android .tabs-striped .tabs, .platform-android .tabs-striped .tabs a {
+    color: #fff;
+}
+
+.platform-android .tab-item .icon {
+    display: none;
+}
+
+.platform-android .bar-blue {
+    background-color: #F44336;
+    border-color: #F44336;
+}
+
+.platform-android .bar-stable {
+    background-color: #F44336;
+    border-color: #F44336;
+}
+
+.platform-android .bar-blue .title.title-left{
+    padding-left: 12px;
+}
+
+.platform-android .bar-blue .icon{
+    color: #fff;
+}
+
+.platform-android .bar-blue .title.title-left.header-item{
+    color: #fff;
+}
+
+.platform-android .tabs-top.tabs-striped .tab-item.tab-item-active,
+.platform-android .tabs-top.tabs-striped .tab-item.active,
+.platform-android .tabs-top.tabs-striped .tab-item.activated{
+    border-width: 0px 0px 2px 0px !important;
+    border-color: #fff;
+}
+
+.platform-android .tabs-icon-top > .tabs .tab-item,
+.platform-android .tabs-icon-top.tabs .tab-item,
+.platform-android .tabs-icon-bottom > .tabs .tab-item,
+.platform-android .tabs-icon-bottom.tabs .tab-item{
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.menuDetail .header-title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.menuDetail .header-title .col-75 {
+    padding: 0 8px 0 15px;
+}
+
+.menuDetail .header-title h4.menu-title{
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 20px;
+}
+
+.menuDetail .header-title .price{
+    background-color: #64DD17;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.menuDetail .header-title .price h4{
+    font-size: 20px;
+    color: #FFF;
+}
+
+.menuDetail .divider{
+    margin-top: 20px;
+    padding: 10px 10px 0 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.menuDetail .divider .col{
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.menuDetail .description{
+    margin-top: 10px;
+    padding: 0 10px 0 10px;
+    font-size: 15px;
+}
+
+.action-buttons-footer{
+    height: 100px;
+    background: none;
+}
+
+.action-buttons{
+    background-color: rgba(255, 255, 255, 0.75);
+    height: 94px;
+}
+
+.action-buttons .col{
+    text-align: center;
+}
+
+.menuDetail.scroll-content{
+    height: 100%;
+}
+
+.menuDetail .store-title{
+    padding-top: 20px;
+    padding-left:13px;
+    padding-bottom: 0;
+}
+
+.mapContent .scroll{
+    height: 100%;
+}
+
+.mapContent .map{
+    height: 100%;
+}
+
+.favoriteMenu .icon {
+    color: #838383;
+}
+
+.favoriteMenu .icon.active {
+    color: #e4c613;
+}
+
+.secondary-action{
+    padding: 0 15px 0 0;
+}
+
+.secondary-action a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #444;
+}
+
+.platform-android .secondary-action a {
+    color: #fff;
+}
+
+.myProfile .icon {
+    color: #474747;
+}
+
+.commentsForm .title , .commentsForm span{
+    color: #444;
+}
+
+.commentsForm textarea{
+    height: 150px;
+}
+
+.commentsForm .button{
+
+}
+
+.platform-android .commentsForm .title, .platform-android .commentsForm span{
+    color: #fff;
+}
+
+.locationDetail a{
+    text-decoration: none;
+    color: #444;
+}
+
+.locationDetail .icon{
+    font-size: 35px;
+    color: #d23f31;
+}
+
+.locationDetail .phone .icon {
+   font-size: 14px;
+    padding-right: 10px;
+}
+
+.platform-ios ion-tabs.tabs-color-active-positive .tab-item.tab-item-active,
+.platform-ios ion-tabs.tabs-color-active-positive .tab-item.active,
+.platform-ios ion-tabs.tabs-color-active-positive .tab-item.activated{
+    color: #F44336;
+}

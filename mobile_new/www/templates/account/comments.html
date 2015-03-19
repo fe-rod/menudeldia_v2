@@ -1,0 +1,22 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-stable commentsForm">
+        <h1 class="title">Comentarios</h1>
+        <div class="button button-clear" ng-click="commentsModal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content class="padding commentsForm" scroll="true">
+        <div class="row">
+            <div class="col">
+                <label class="item item-input">
+                    <textarea ng-model="comments.value" type="text" placeholder="Ingresá tu opinión sobre la aplicación o cualquier cosa que nos quieras decir. Muchas gracias."></textarea>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-20"></div>
+            <div class="col">
+                <button class="button button-block matdesign-button raised grey" ng-click="sendComments()">Enviar comentarios</button>
+            </div>
+            <div class="col-20"></div>
+        </div>
+    </ion-content>
+</ion-modal-view>

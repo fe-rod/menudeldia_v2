@@ -1,0 +1,88 @@
+
+/* FAB */
+.fab {
+    position: relative;
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    color: #fff;
+    overflow: hidden;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.2s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.fab.red {
+    background-color: #d23f31;
+    text-align: center;
+    padding-top: 16px;
+}
+
+.fab .icon {
+    font-size: 22px;
+}
+
+.fab.blue {
+    background-color: #4285f4;
+}
+
+.fab.green {
+    background-color: #0f9d58;
+}
+
+.fab:active {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    transition-delay: 0s;
+}
+
+/* Button */
+.matdesign-button {
+    display: inline-block;
+    position: relative;
+    width: 120px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 2px;
+    font-size: 13px;
+    background-color: #fff;
+    color: #646464;
+    border:none;
+}
+
+.matdesign-button > paper-ripple {
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.matdesign-button.narrow {
+    width: 60px;
+}
+
+.matdesign-button.grey {
+    background-color: #eee;
+}
+
+.matdesign-button.blue {
+    background-color: #4285f4;
+    color: #fff;
+}
+
+.matdesign-button.green {
+    background-color: #0f9d58;
+    color: #fff;
+}
+
+.matdesign-button.raised {
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.2s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.matdesign-button.raised:active {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    transition-delay: 0s;
+}
+
+
+

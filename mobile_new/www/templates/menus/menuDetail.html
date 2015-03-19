@@ -1,0 +1,87 @@
+<ion-view view-title="{{menu.nearestLocation.restaurantName}}">
+    <ion-content class="menuDetail" scroll="true">
+        <div class="row header-title">
+            <div class="col-75 col-center">
+                <h4 class="menu-title">{{menu.name}}</h4>
+            </div>
+            <div class="col-20 col-center price">
+                <h4>$ {{menu.price}}</h4>
+            </div>
+        </div>
+        <div ng-show="menu.description.length" class="row divider">
+            <div class="col col-center">
+                DESCRIPCI&Oacute;N
+            </div>
+        </div>
+        <div ng-show="menu.description.length" class="row description">
+            <div class="col">
+                {{menu.description}}
+            </div>
+        </div>
+        <div ng-show="menu.ingredients.length" class="row divider">
+            <div class="col col-center">
+                INGREDIENTES
+            </div>
+        </div>
+        <div ng-show="menu.ingredients.length" class="row description">
+            <div class="col">
+                {{menu.ingredients}}
+            </div>
+        </div>
+        <div ng-show="menu.nearestLocation" class="row divider">
+            <div class="col col-center">
+                {{menu.nearestLocation.restaurantName | uppercase}}
+            </div>
+        </div>
+        <div ng-show="menu.nearestLocation" class="row description">
+            <div class="col col-33">
+                Tel&eacute;fono
+            </div>
+            <div class="col col-75">
+                {{menu.nearestLocation.phone}}
+            </div>
+        </div>
+        <div ng-show="menu.nearestLocation" class="row description">
+            <div class="col col-33">
+                Direcci&oacute;n
+            </div>
+            <div class="col col-75">
+                {{menu.nearestLocation.streets}}
+            </div>
+        </div>
+        <div class="row" style="height: 250px">
+        </div>
+    </ion-content>
+    <ion-footer-bar class="action-buttons-footer">
+        <div class="row action-buttons">
+            <div class="col">
+                <a href="tel:{{menu.nearestLocation.phone}}" class="fab red">
+                    <core-icon icon="" role="img">
+                        <i class="icon ion-android-call"></i>
+                    </core-icon>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#/tab/menuMap/{{menu.nearestLocation.latitude}}/{{menu.nearestLocation.longitude}}" class="fab red">
+                    <core-icon icon="" role="img">
+                        <i class="icon ion-location"></i>
+                    </core-icon>
+                </a>
+            </div>
+            <!--<div class="col">-->
+                <!--<a class="fab red">-->
+                    <!--<core-icon icon="" role="img">-->
+                        <!--<i class="icon ion-chatbox-working"></i>-->
+                    <!--</core-icon>-->
+                <!--</a>-->
+            <!--</div>-->
+        </div>
+    </ion-footer-bar>
+    <!--<ion-footer-bar>-->
+        <!--<div class="button-bar">-->
+            <!--<a class="button button-stable" href="tel:{{menu.store.phone}}"><span class="icon ion-ios7-telephone"></span></a>-->
+            <!--<a class="button button-stable" href="#/tab/menuMap/{{menu.store.id}}"><span class="icon ion-ios7-location"></span></a>-->
+            <!--<a class="button button-stable"><span class="icon ion-ios7-star"></span></a>-->
+        <!--</div>-->
+    <!--</ion-footer-bar>-->
+</ion-view>

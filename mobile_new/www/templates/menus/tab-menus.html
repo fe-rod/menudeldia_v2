@@ -1,0 +1,44 @@
+<ion-view title="Menú del día">
+    <ion-content class="has-header" has-bouncing="true">
+        <ion-refresher
+                pulling-text="Desliza hacia abajo para refrescar.."
+                on-refresh="refreshMenu()">
+        </ion-refresher>
+        <ion-list can-swipe="true" ng-hide="geolocError">
+            <ion-item ng-repeat="menu in menus" class="item item-text-wrap item-avatar menuList" href="#/tab/menu/{{menu.id}}">
+                <img src="data:image/{{menu.logo.logoExtension}};base64,{{menu.logo.logoBase64}}" />
+                <div class="row">
+                    <div class="col-90">
+                        {{menu.name}}
+                    </div>
+                    <div class="col-20">
+                        ${{menu.price}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-90">
+                        <p>{{menu.nearestLocation.restaurantName}}</p>
+                        <p ng-show="menu.nearestLocation.distance>=0">
+                            {{menu.nearestLocation.distance | distance }}
+                        </p>
+                    </div>
+                </div>
+                <!--<ion-option-button class="favoriteMenu button-stable" ng-click="favorite(menu)">-->
+                    <!--<div class="row row-center">-->
+                        <!--<i class="icon ion-ios7-star star" ng-class="{'active': menu.favorite}"></i>-->
+                    <!--</div>-->
+                <!--</ion-option-button>-->
+            </ion-item>
+        </ion-list>
+        <div class="row" ng-show="geolocError">
+            <div class="col">
+                No se ha podido encontrar tu ubicaci&oacute;n. ({{gpsError}})
+            </div>
+        </div>
+        <ion-infinite-scroll
+                ng-if="moreDataCanBeLoaded"
+                on-infinite="loadMore()"
+                distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>
