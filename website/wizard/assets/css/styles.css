@@ -1,0 +1,42 @@
+body {
+    padding-top: 50px;
+}
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.wizard-steps {
+    margin-bottom: 20px;
+}
+
+.wizard-steps .step{
+    background: #9E9E9E;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.wizard-steps .step.active{
+    background: #f44336;
+    line-height: 50px;
+}
+
+.wizard-steps .step a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.wizard-steps .separator{
+    color: #FFF;
+    font-size: 30px;
+    line-height: 50px;
+}
+
+.wizard-steps .separator.active{
+    color: #f44336;
+}
+
+.image-container .upload{
+    margin-top: 5px;
+}
