@@ -1,9 +1,22 @@
 body {
-    padding-top: 50px;
+    padding-top: 0px;
 }
 .starter-template {
     padding: 40px 15px;
     text-align: center;
+}
+
+.tags-container{
+    text-align: left;
+}
+
+.login-container h3{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.button-container .next-step i{
+    font-size: 19px;
 }
 
 .wizard-steps {
