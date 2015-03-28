@@ -1,28 +1,29 @@
 <div class="row">
     <div class="col-md-3 image-container">
-        <img data-src="holder.js/200x200" class="img-thumbnail" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-        <button class="btn btn-default upload" type="submit">Subir imagen</button>
+        <div class="well my-drop-zone" over-class="another-file-over-class" nv-file-drop="" nv-file-over="" uploader="uploader">
+            Arrastr&aacute; el logo de tu empresa
+        </div>
+        <input type="file" nv-file-select uploader="uploader"/>
     </div>
     <div class="col-md-9">
-
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg" placeholder="Nombre de la empresa">
+                    <input type="text" class="form-control input-lg" placeholder="Nombre de la empresa" ng-model="company.name">
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control input-lg" placeholder="Descripcion"></textarea>
+                    <textarea class="form-control input-lg" placeholder="Descripcion" ng-model="company.description"></textarea>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">http://</div>
-                        <input type="text" class="form-control input-lg" placeholder="Sitio web">
+                        <input type="text" class="form-control input-lg" placeholder="Sitio web" ng-model="company.url">
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control input-lg" placeholder="Email"/>
+                    <input type="email" class="form-control input-lg" placeholder="Email" ng-model="company.email"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg" placeholder="Teléfono general"/>
+                    <input type="text" class="form-control input-lg" placeholder="Teléfono general" ng-model="company.phone"/>
                 </div>
                 <div class="row text-left">
                     <div class="col-md-12">
@@ -48,10 +49,10 @@
                     <div class="col-lg-3"></div>
                     <div class="col-md-12 col-lg-6">
                         <div class="form-group">
-                            <input type="text" class="form-control input-lg" placeholder="Nombre de usuario (email)"/>
+                            <input type="text" class="form-control input-lg" placeholder="Nombre de usuario (email)" ng-model="company.userName"/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control input-lg" placeholder="Contraseña"/>
+                            <input type="password" class="form-control input-lg" placeholder="Contraseña" ng-model="company.password"/>
                         </div>
                     </div>
                     <div class="col-lg-3"></div>

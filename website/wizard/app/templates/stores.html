@@ -1,38 +1,39 @@
-<div class="row">
+<div class="row" ng-if="showForm">
     <div class="col-lg-2"></div>
     <div class="col-md-12 col-lg-8 store-form">
         <form>
             <div class="form-group">
-                <input type="text" class="form-control input-lg" placeholder="Identificador" ng-model="store.name">
+                <input type="text" class="form-control input-lg" placeholder="Identificador" ng-model="store.identifier">
                 <p class="help-block text-left">
                     En caso de tener varios locales, este texto permitir&aacute; identificar tus locales.
                 </p>
                 <p class="help-block text-left">
-                    Ejemplo:<strong>Nombre empresa - {{store.name}}</strong>
+                    Ejemplo:<strong>Nombre empresa - {{store.identifier}}</strong>
                 </p>
             </div>
             <div class="form-group">
-                <select class="form-control input-lg">
+                <select class="form-control input-lg" ng-model="store.zone">
                     <option>Selecciona un barrio</option>
                     <option>Centro</option>
                     <option>Ciudad vieja</option>
+                    <option>Parque Batlle</option>
                     <option>Pocitos</option>
                     <option>Punta Carretas</option>
                 </select>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control input-lg" placeholder="Dirección">
+                <input type="text" class="form-control input-lg" placeholder="Dirección" ng-model="store.address">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control input-lg" placeholder="Teléfono del local">
+                <input type="text" class="form-control input-lg" placeholder="Teléfono del local" ng-model="store.phone">
             </div>
             <div class="form-group">
-                <textarea class="form-control input-lg" placeholder="Características especiales. Ej: wifi, terraza, deck, refill, etc."></textarea>
+                <textarea ng-model="store.features" class="form-control input-lg" placeholder="Características especiales. Ej: wifi, terraza, deck, refill, etc."></textarea>
             </div>
             <div class="form-group">
-                <select class="form-control input-lg">
-                    <option>Tiene delivery</option>
-                    <option>No tiene delivery</option>
+                <select class="form-control input-lg" ng-model="store.delivery">
+                    <option value="true">Tiene delivery</option>
+                    <option value="false">No tiene delivery</option>
                 </select>
             </div>
             <div class="row text-left">
@@ -41,7 +42,7 @@
                 </div>
             </div>
             <div class="timetable-container">
-                <div class="row well" ng-repeat="day in days">
+                <div class="row well" ng-repeat="day in store.days">
                     <div class="col-md-2 text-left">
                         <h2><small>{{day.name}}</small></h2>
                     </div>
@@ -68,6 +69,11 @@
                     <h2><small>Hac&eacute; click en el mapa para ubicar tu local. Esto es importante para que los clientes
                     de la zona encuentren f&aacute;cilmente su comida :)</small></h2>
                 </div>
+                <div class="col-md-12">
+                    <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.events">
+                        <ui-gmap-marker ng-if="markerOn" coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id"></ui-gmap-marker>
+                    </ui-gmap-google-map>
+                </div>
             </div>
             <div class="row button-container">
                 <div class="col-md-6">
@@ -85,7 +91,13 @@
 
 
 
-
+<div ng-repeat="store in stores" class="row" ng-hide="showForm">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 col-md-12 well add-store-container" ng-click="showStore(store)">
+        <label>Nombre empresa - {{store.identifier}}</label>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
 
 <div class="row" ng-hide="showForm">
 <div class="col-lg-2"></div>

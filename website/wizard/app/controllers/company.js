@@ -5,9 +5,23 @@
         .module('menudeldia')
         .controller('companyCtrl', company);
 
-    company.$inject = ['$scope', '$timeout'];
+    company.$inject = ['$scope', '$timeout', 'FileUploader'];
 
-    function company($scope,$timeout) {
+    function company($scope, $timeout, FileUploader) {
+
+        $scope.company = {
+            name: '',
+            description: '',
+            url: '',
+            email: '',
+            phone: '',
+            tags: [],
+            userName: '',
+            password: '',
+            image:''
+        };
+
+
         $scope.tags = [
             {id: "1", name: "Minutas"},
             {id: "2", name: "Milanesas"},
@@ -41,6 +55,17 @@
                 $scope.loadingNextStep = false;
             }, 3000)
         }
+
+        //Image upload
+        $scope.uploader = new FileUploader();
+
+        $scope.uploader.filters.push({
+            name: 'imageFilter',
+            fn: function(item /*{File|FileLikeObject}*/, options) {
+                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+            }
+        });
     }
 })();
 

@@ -1,5 +1,5 @@
 angular.module("menudeldia")
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
 
         $urlRouterProvider.otherwise('company');
 
@@ -18,6 +18,12 @@ angular.module("menudeldia")
                 url: '/menu',
                 templateUrl: 'app/templates/menu.html',
                 controller: 'menuCtrl'
-            })
+            });
+
+        uiGmapGoogleMapApiProvider.configure({
+            //    key: 'your api key',
+            v: '3.17',
+            libraries: 'weather,geometry,visualization'
+        });
 
     });
