@@ -15,6 +15,20 @@ body {
     margin-top: 10px;
 }
 
+.add-store-container, .add-store-container label{
+    cursor: pointer;
+    color: #5b5b5b;
+}
+
+.add-store-container i{
+    font-size: 19px;
+}
+
+.add-store-container:hover{
+    background-color: #e3e3e3;
+    border-color: #d1d1d1;
+}
+
 .button-container .next-step i{
     font-size: 19px;
 }
@@ -52,4 +66,26 @@ body {
 
 .image-container .upload{
     margin-top: 5px;
+}
+
+.timetable-container{
+    margin-bottom: 0px;
+}
+
+.timetable-container h2{
+    margin: 0;
+}
+
+.timetable-container .well{
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.map-container{
+    margin-bottom: 50px;
+}
+
+.store-form .help-block{
+    font-size: 16px;
+    padding-top: 6px;
 }
