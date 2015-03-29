@@ -1,3 +1,54 @@
+<div class="menu-page well" ng-repeat="day in week">
 <div class="row">
-MENU
+    <div class="col-md-12">
+        <h4>{{day.name}}</h4>
+    </div>
+</div>
+<div class="row menu-container">
+    <div class="col-md-4">
+        <input type="text" class="form-control input-lg" placeholder="Menu 1">
+    </div>
+    <div class="col-md-2">
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control input-lg" placeholder="Precio">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <input type="text" class="form-control input-lg" placeholder="Descripción">
+    </div>
+</div>
+<div class="row menu-container">
+    <div class="col-md-4">
+        <input type="text" class="form-control input-lg" placeholder="Menu 2">
+    </div>
+    <div class="col-md-2">
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control input-lg" placeholder="Precio">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <input type="text" class="form-control input-lg" placeholder="Descripción">
+    </div>
+</div>
+    <div class="row menu-container">
+        <div class="col-md-4">
+            <input type="text" class="form-control input-lg" placeholder="Menu 3">
+        </div>
+        <div class="col-md-2">
+            <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control input-lg" placeholder="Precio">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control input-lg" placeholder="Descripción">
+        </div>
+    </div>
+</div>
+<div class="row button-container">
+    <div class="col-md-6">
+        <button ng-click="save()" type="submit" class="btn btn-primary btn-lg pull-left" ladda="loadingSave" data-style="expand-right">Guardar</button>
+    </div>
 </div>

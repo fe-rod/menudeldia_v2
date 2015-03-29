@@ -5,12 +5,12 @@
         .module('menudeldia')
         .controller('storesCtrl', stores);
 
-    stores.$inject = ['$scope', '$timeout', '$log'];
+    stores.$inject = ['$scope', '$state', '$timeout', '$log'];
 
-    function stores($scope, $timeout,$log) {
+    function stores($scope, $state, $timeout,$log) {
 
         $scope.stores = [];
-        $scope.store = {};
+        $scope.store = newStore();
 
         $scope.showForm = false;
         if($scope.stores.length == 0)
@@ -31,7 +31,18 @@
                 phone: store.phone,
                 features: store.features,
                 delivery: store.delivery,
-                days : store.days
+                days : store.days,
+                location: store.location
+            };
+
+            $scope.markerOn = true;
+            $scope.marker = {
+                id: 0,
+                coords: {
+                    latitude: store.location.latitude,
+                    longitude: store.location.longitude
+                },
+                options: { draggable: true }
             };
         }
 
@@ -40,16 +51,24 @@
 
         $scope.save = function(){
             $scope.loadingSave = true;
+            $scope.store.location.latitude = $scope.marker.coords.latitude;
+            $scope.store.location.longitude = $scope.marker.coords.longitude;
             $scope.stores.push($scope.store);
             $timeout(function(){
                 $scope.loadingSave = false;
                 $scope.showForm = false;
+
+                //clear marker
+                $scope.marker = null;
+                $scope.markerOn = false;
+
             }, 3000)
         }
 
         $scope.nextStep = function(){
             $scope.loadingNextStep = true;
             $timeout(function(){
+                $state.go('menu');
                 $scope.loadingNextStep = false;
             }, 3000)
         }
@@ -94,7 +113,11 @@
                     { name: 'Viernes', from: '', to:'', open: true},
                     { name: 'Sábado', from: '', to:'', open: true},
                     { name: 'Domingo', from: '', to:'', open: true}
-                ]
+                ],
+                location: {
+                    latitude: null,
+                    longitude: null
+                }
             };
         }
     }

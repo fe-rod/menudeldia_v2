@@ -1,6 +1,7 @@
 body {
     padding-top: 0px;
 }
+
 .starter-template {
     padding: 40px 15px;
     text-align: center;
@@ -95,3 +96,30 @@ body {
 .my-drop-zone { border: dotted 3px lightgray; }
 .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
 .another-file-over-class { border: dotted 3px green; }
+
+.image-thumb{
+    margin-bottom: 8px;
+}
+
+.image-close {
+    color: #5b5b5b;
+    cursor: pointer;
+}
+
+.image-close i {
+    padding-left: 5px;
+}
+
+.menu-container {
+    margin-bottom: 10px;
+}
+
+.menu-page{
+    padding-top: 5px;
+    text-align: left;
+}
+
+.menu-page h4 {
+    padding-bottom: 5px;
+    color: #5b5b5b;
+}

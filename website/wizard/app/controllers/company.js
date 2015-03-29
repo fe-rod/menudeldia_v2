@@ -5,9 +5,9 @@
         .module('menudeldia')
         .controller('companyCtrl', company);
 
-    company.$inject = ['$scope', '$timeout', 'FileUploader'];
+    company.$inject = ['$scope', '$state', '$timeout', 'FileUploader'/*, 'companyService'*/];
 
-    function company($scope, $timeout, FileUploader) {
+    function company($scope, $state, $timeout, FileUploader/*, companyService*/) {
 
         $scope.company = {
             name: '',
@@ -20,7 +20,6 @@
             password: '',
             image:''
         };
-
 
         $scope.tags = [
             {id: "1", name: "Minutas"},
@@ -44,15 +43,25 @@
 
         $scope.save = function(){
             $scope.loadingSave = true;
-            $timeout(function(){
-                $scope.loadingSave = false;
-            }, 3000)
+
+            //upload image
+            //$scope.uploader.queue[0].upload(); //Manage errors
+
+            //save user
+
+            //save company
+//            companyService.save($scope.company).then(function(){
+//                $timeout(function(){
+//                    $scope.loadingSave = false;
+//                }, 3000);
+//            });
         }
 
         $scope.nextStep = function(){
             $scope.loadingNextStep = true;
             $timeout(function(){
                 $scope.loadingNextStep = false;
+                $state.go('stores');
             }, 3000)
         }
 

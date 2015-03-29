@@ -26,4 +26,9 @@ angular.module("menudeldia")
             libraries: 'weather,geometry,visualization'
         });
 
+    })
+    .run(function ($rootScope) {
+        $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
+        });
     });

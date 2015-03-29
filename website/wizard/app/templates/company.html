@@ -1,9 +1,13 @@
 <div class="row">
     <div class="col-md-3 image-container">
-        <div class="well my-drop-zone" over-class="another-file-over-class" nv-file-drop="" nv-file-over="" uploader="uploader">
-            Arrastr&aacute; el logo de tu empresa
+        <div class="image-thumb" ng-if="uploader.queue[0]">
+            <div ng-show="uploader.isHTML5" ng-thumb="{ file: uploader.queue[0]._file, height: 100 }"></div>
+            <a class="image-close" href ng-click="uploader.queue[0].remove()"><i class="fa fa-trash"></i> Borrar imagen</a>
         </div>
-        <input type="file" nv-file-select uploader="uploader"/>
+        <div ng-if="uploader.queue.length == 0" class="well my-drop-zone" over-class="another-file-over-class" nv-file-drop="" nv-file-over="" uploader="uploader">
+            Arrastr&aacute; aqu&iacute; el logo de tu empresa
+        </div>
+        <input ng-if="uploader.queue.length == 0" type="file" nv-file-select uploader="uploader"/>
     </div>
     <div class="col-md-9">
             <form>
