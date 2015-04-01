@@ -49,6 +49,10 @@ body {
     line-height: 50px;
 }
 
+.wizard-steps .step.step-disabled{
+    cursor: default;
+}
+
 .wizard-steps .step a{
     color: #fff;
     text-decoration: none;

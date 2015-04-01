@@ -5,7 +5,7 @@ angular.module("menudeldia")
 
         $stateProvider
             .state('company', {
-                url: '/company',
+                url: '/company?cId',
                 templateUrl: 'app/templates/company.html',
                 controller: 'companyCtrl'
             })

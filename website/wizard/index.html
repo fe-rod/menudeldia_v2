@@ -22,7 +22,7 @@
                 </div>
             </div>
             <!--<div class="col-md-1 separator"><i class="fa fa-chevron-right"></i></div>-->
-            <div class="col-md-4 step" ui-sref="stores" ui-sref-active="active">
+            <div class="col-md-4 step" ng-if="enabledStores" ui-sref-active="active" ui-sref="stores">
                 <div class="col-md-1 separator">
                     <i class="fa fa-home"></i>
                 </div>
@@ -30,8 +30,23 @@
                     <a>MIS LOCALES</a>
                 </div>
             </div>
-            <!--<div class="col-md-1 separator" ><i class="fa fa-chevron-right"></i></div>-->
-            <div class="col-md-4 step" ui-sref="menu" ui-sref-active="active">
+            <div class="col-md-4 step step-disabled" ng-if="!enabledStores">
+                <div class="col-md-1 separator">
+                    <i class="fa fa-home"></i>
+                </div>
+                <div class="col-md-10">
+                    <a>MIS LOCALES</a>
+                </div>
+            </div>
+            <div class="col-md-4 step" ui-sref-active="active" ui-sref="menu" ng-if="enabledMenu">
+                <div class="col-md-1 separator">
+                    <i class="fa fa-th-list"></i>
+                </div>
+                <div class="col-md-10">
+                    <a>MI MENU</a>
+                </div>
+            </div>
+            <div class="col-md-4 step step-disabled" ng-if="!enabledMenu">
                 <div class="col-md-1 separator">
                     <i class="fa fa-th-list"></i>
                 </div>
@@ -59,6 +74,8 @@
 <script type="application/javascript" src="app/controllers/stores.js"></script>
 <script type="application/javascript" src="app/controllers/menu.js"></script>
 <script type="application/javascript" src="app/directives/ng-thumb.js"></script>
+//Services
+<script type="application/javascript" src="app/services/companyService.js"></script>
 
 </body>
 </html>
