@@ -5,23 +5,45 @@
         .module('menudeldia')
         .controller('storesCtrl', stores);
 
-    stores.$inject = ['$scope', '$state', '$timeout', '$log'];
+    stores.$inject = ['$scope', '$state', '$stateParams', 'companyService', '$timeout', '$log'];
 
-    function stores($scope, $state, $timeout,$log) {
+    function stores($scope, $state, $stateParams, companyService, $timeout,$log) {
 
-        $scope.stores = [];
-        $scope.store = newStore();
+        $scope.showStore = showStore;
+        $scope.addStore = addStore;
+        $scope.save = save;
+        $scope.nextStep = nextStep;
+        $scope.toggleOpenDay = toggleOpenDay;
 
-        $scope.showForm = false;
-        if($scope.stores.length == 0)
-            $scope.showForm = true;
+        activate();
 
-        $scope.addStore = function(){
+        function activate(){
+            $scope.loadingSave = false;
+            $scope.loadingNextStep = false;
+            loadCompanyWithStores($stateParams.cId);
+            initMap();
+        }
+
+        function loadCompanyWithStores(id){
+            var company = $scope.company = companyService.getCompanyWithStores(id);
+            //if company not found show error (404)
+            //404
+
+            $scope.stores = company.stores;
+
+            $scope.showForm = false;
+            if($scope.stores.length == 0) {
+                $scope.showForm = true;
+                $scope.store = newStore();
+            }
+        }
+
+        function addStore() {
             $scope.store = newStore();
             $scope.showForm = true;
         }
 
-        $scope.showStore = function(store){
+        function showStore(store){
             $scope.showForm = true;
             $scope.store = {
                 id: store.id,
@@ -46,10 +68,7 @@
             };
         }
 
-        $scope.loadingSave = false;
-        $scope.loadingNextStep = false;
-
-        $scope.save = function(){
+        function save(){
             $scope.loadingSave = true;
             $scope.store.location.latitude = $scope.marker.coords.latitude;
             $scope.store.location.longitude = $scope.marker.coords.longitude;
@@ -65,7 +84,7 @@
             }, 3000)
         }
 
-        $scope.nextStep = function(){
+        function nextStep(){
             $scope.loadingNextStep = true;
             $timeout(function(){
                 $state.go('menu');
@@ -73,29 +92,31 @@
             }, 3000)
         }
 
-        $scope.toggleOpenDay = function(day){
+        function toggleOpenDay(day){
             day.open = !day.open;
         }
 
-        $scope.map = {
-            center: { latitude: -34.8976001, longitude: -56.1419506 },
-            zoom: 13,
-            events: {
-                click: function (map, ev, ev2) {
-                    $scope.$apply(function () {
-                        $scope.mapInstance = map;
-                        $scope.markerOn = true;
-                        $scope.marker = {
-                            id: 0,
-                            coords: {
-                                latitude: ev2[0].latLng.lat(),
-                                longitude: ev2[0].latLng.lng()
-                            },
-                            options: { draggable: true }
-                        };
-                    });
-                }
-            }};
+        function initMap(){
+            $scope.map = {
+                center: { latitude: -34.8976001, longitude: -56.1419506 },
+                zoom: 13,
+                events: {
+                    click: function (map, ev, ev2) {
+                        $scope.$apply(function () {
+                            $scope.mapInstance = map;
+                            $scope.markerOn = true;
+                            $scope.marker = {
+                                id: 0,
+                                coords: {
+                                    latitude: ev2[0].latLng.lat(),
+                                    longitude: ev2[0].latLng.lng()
+                                },
+                                options: { draggable: true }
+                            };
+                        });
+                    }
+                }};
+        }
 
         function newStore(){
             return {

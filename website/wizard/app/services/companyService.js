@@ -9,12 +9,13 @@
 
     function companyService($q, $http) {
         var service = {
-            getCompanyById: getCompanyById
+            getCompany: getCompany,
+            getCompanyWithStores: getCompanyWithStores
         };
 
         return service;
 
-        function getCompanyById(id) {
+        function getCompany(id) {
 //            var deferred = $q.defer();
 //
 //            //call webapi service
@@ -30,9 +31,22 @@
                 url: 'www.fanaticos.com.uy',
                 email: 'fanaticos@mail.com',
                 phone: '27112523',
-                tags: [],
+                tags: ['1', '2', '3', '5'],
                 userName: '',
                 password: '',
+                image:''
+            };
+        }
+
+        function getCompanyWithStores(id){
+            return {
+                name: 'Fanaticos',
+                description: 'Los mejores wraps de pais y el mejore servicio.',
+                url: 'www.fanaticos.com.uy',
+                email: 'fanaticos@mail.com',
+                phone: '27112523',
+                tags: ['1', '2', '3', '5'],
+                stores: [],
                 image:''
             };
         }

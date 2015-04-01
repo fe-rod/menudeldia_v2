@@ -5,9 +5,9 @@
         .module('menudeldia')
         .controller('companyCtrl', company);
 
-    company.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$timeout', 'FileUploader', 'companyService'];
+    company.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$timeout', 'FileUploader', 'companyService', 'configService', 'authService'];
 
-    function company($scope, $rootScope, $state, $stateParams, $timeout, FileUploader, companyService) {
+    function company($scope, $rootScope, $state, $stateParams, $timeout, FileUploader, companyService, configService, authService) {
 
         //function definition
         $scope.loadTags = loadTags;
@@ -20,6 +20,7 @@
         //functions
 
         function activate(){
+            $scope.existingCompany = false;
             $scope.loadingSave = false;
             $scope.loadingNextStep = false;
 
@@ -37,42 +38,36 @@
                 loadCompany($stateParams.cId);
                 $rootScope.enabledStores = true;
                 $rootScope.enabledMenu= true;
+                $scope.existingCompany = true;
             }
         }
 
         function loadTags(){
-            $scope.tags = [
-                {id: "1", name: "Minutas"},
-                {id: "2", name: "Milanesas"},
-                {id: "3", name: "Wraps"},
-                {id: "4", name: "Chivitos"},
-                {id: "5", name: "Ensaladas"},
-                {id: "6", name: "Tartas"},
-                {id: "7", name: "Postres"},
-                {id: "8", name: "Vegetariana"},
-                {id: "9", name: "Pizza"},
-                {id: "10", name: "Hamburguesas"},
-                {id: "11", name: "Sushi"},
-                {id: "12", name: "Helados"},
-                {id: "13", name: "Thai"},
-                {id: "14", name: "Comida china"},
-            ];
+            $scope.tags = configService.getTags();
+        }
+
+        function registerUser(){
+            authService.register($scope.user);
+        }
+
+        function uploadImage(){
+            //$scope.uploader.queue[0].upload(); //Manage errors
         }
 
         function saveCompany(){
             $scope.loadingSave = true;
 
-            //upload image
-            //$scope.uploader.queue[0].upload(); //Manage errors
+            uploadImage();
 
-            //save user
+            registerUser();
 
-            //save company
-//            companyService.save($scope.company).then(function(){
-//                $timeout(function(){
-//                    $scope.loadingSave = false;
-//                }, 3000);
-//            });
+            //set new tags
+            $scope.company.tags = _.pluck(_.filter($scope.tags, function(i){ return i.selected }), 'id');
+//          companyService.save($scope.company).then(function(){
+                $timeout(function(){
+                    $scope.loadingSave = false;
+                }, 3000);
+//          });
         }
 
         function nextStep(){
@@ -91,16 +86,25 @@
                 email: '',
                 phone: '',
                 tags: [],
-                userName: '',
-                password: '',
                 image:''
             };
+
+            $scope.user = {
+                userName: '',
+                password: ''
+            }
         }
 
         function loadCompany(id){
-            $scope.company = companyService.getCompanyById(id);
-
+            $scope.company = companyService.getCompany(id);
             //if company not found show error (404)
+                //404
+            //else
+             //merge company tags
+            _.map($scope.tags, function(item){
+                item.selected = _.indexOf($scope.company.tags, item.id) !== -1;
+                return item;
+            });
         }
 
         function initImageUpload(){
