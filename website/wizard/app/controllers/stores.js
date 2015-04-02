@@ -5,9 +5,9 @@
         .module('menudeldia')
         .controller('storesCtrl', stores);
 
-    stores.$inject = ['$scope', '$state', '$stateParams', 'companyService', '$timeout', '$log'];
+    stores.$inject = ['$scope', '$rootScope', '$state', '$stateParams', 'companyService', '$timeout', '$log'];
 
-    function stores($scope, $state, $stateParams, companyService, $timeout,$log) {
+    function stores($scope, $rootScope, $state, $stateParams, companyService, $timeout,$log) {
 
         $scope.showStore = showStore;
         $scope.addStore = addStore;
@@ -18,6 +18,7 @@
         activate();
 
         function activate(){
+            $rootScope.enabledStores = true;
             $scope.loadingSave = false;
             $scope.loadingNextStep = false;
             loadCompanyWithStores($stateParams.cId);
@@ -113,6 +114,8 @@
                                 },
                                 options: { draggable: true }
                             };
+                            $scope.store.location.latitude = ev2[0].latLng.lat();
+                            $scope.store.location.longitude = ev2[0].latLng.lng();
                         });
                     }
                 }};
@@ -141,6 +144,40 @@
                 }
             };
         }
+
+        $scope.$watch('stores', function() {
+                $scope.showNextStep =
+                    ($scope.showForm &&
+                        (
+                            $scope.store != null &&
+                            $scope.store.zone != '' &&
+                            $scope.store.address != '' &&
+                            $scope.store.phone != '' &&
+                            ($scope.store.location != null &&
+                                $scope.store.location.latitude != null &&
+                                $scope.store.location.longitude != null)
+                            )
+                        ) ||
+                    (!$scope.showForm && ($scope.stores != null && $scope.stores.length > 0));
+        },
+        true);
+
+        $scope.$watch('store', function() {
+                $scope.showNextStep =
+                    ($scope.showForm &&
+                    (
+                        $scope.store != null &&
+                        $scope.store.zone != '' &&
+                        $scope.store.address != '' &&
+                        $scope.store.phone != '' &&
+                        ($scope.store.location != null &&
+                            $scope.store.location.latitude != null &&
+                            $scope.store.location.longitude != null)
+                        )
+                     ) ||
+                    (!$scope.showForm && ($scope.stores != null && $scope.stores.length > 0));
+            },
+            true);
     }
 })();
 

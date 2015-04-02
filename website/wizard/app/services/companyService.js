@@ -10,7 +10,8 @@
     function companyService($q, $http) {
         var service = {
             getCompany: getCompany,
-            getCompanyWithStores: getCompanyWithStores
+            getCompanyWithStores: getCompanyWithStores,
+            getCompanyMenus: getCompanyMenus
         };
 
         return service;
@@ -49,6 +50,59 @@
                 stores: [],
                 image:''
             };
+        }
+
+        function getCompanyMenus(){
+            return [
+                {
+                    dayOfWeek: 1,
+                    name: "Lunes",
+                    menus: [
+                        {name: 'Carne al horno con tortilla de papas', price: '160', description: 'Colita de cuadril condimentada con tortilla de papas espanola'}
+                    ],
+                    isDayOpen: true
+                },
+                {
+                    dayOfWeek: 2,
+                    name: "Martes",
+                    menus: [],
+                    isDayOpen: true
+                },
+                {
+                    dayOfWeek: 3,
+                    name: "Miércoles",
+                    menus: [
+                        {name: 'Bondiola de cerdo con papas a la suiza', price: '175', description: ''},
+                        {name: 'Pollo a la plancha con pure de calabza', price: '150', description: ''},
+                        {name: 'Pescado a la crema con papas rusticas', price: '120', description: ''}
+                    ],
+                    isDayOpen: true
+                },
+                {
+                    dayOfWeek: 4,
+                    name: "Jueves",
+                    menus: [],
+                    isDayOpen: true
+                },
+                {
+                    dayOfWeek: 5,
+                    name: "Viernes",
+                    menus: [],
+                    isDayOpen: true
+                },
+                {
+                    dayOfWeek: 6,
+                    name: "Sábado",
+                    menus: [],
+                    isDayOpen: false
+                },
+                {
+                    dayOfWeek: 7,
+                    name: "Domingo",
+                    menus: [],
+                    isDayOpen: false
+                }
+            ];
         }
     }
 })();

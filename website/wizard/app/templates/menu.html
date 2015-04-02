@@ -1,51 +1,23 @@
-<div class="menu-page well" ng-repeat="day in week">
+<div class="menu-page well" ng-repeat="day in week" ng-if="day.isDayOpen">
 <div class="row">
     <div class="col-md-12">
         <h4>{{day.name}}</h4>
     </div>
 </div>
-<div class="row menu-container">
+<div class="row menu-container" ng-repeat="menu in day.menus">
     <div class="col-md-4">
-        <input type="text" class="form-control input-lg" placeholder="Menu 1">
+        <input type="text" class="form-control input-lg" placeholder="Menu" ng-model="menu.name">
     </div>
     <div class="col-md-2">
         <div class="input-group">
             <div class="input-group-addon">$</div>
-            <input type="text" class="form-control input-lg" placeholder="Precio">
+            <input type="text" class="form-control input-lg" placeholder="Precio" ng-model="menu.price">
         </div>
     </div>
     <div class="col-md-6">
-        <input type="text" class="form-control input-lg" placeholder="Descripción">
+        <input type="text" class="form-control input-lg" placeholder="Descripción" ng-model="menu.description">
     </div>
 </div>
-<div class="row menu-container">
-    <div class="col-md-4">
-        <input type="text" class="form-control input-lg" placeholder="Menu 2">
-    </div>
-    <div class="col-md-2">
-        <div class="input-group">
-            <div class="input-group-addon">$</div>
-            <input type="text" class="form-control input-lg" placeholder="Precio">
-        </div>
-    </div>
-    <div class="col-md-6">
-        <input type="text" class="form-control input-lg" placeholder="Descripción">
-    </div>
-</div>
-    <div class="row menu-container">
-        <div class="col-md-4">
-            <input type="text" class="form-control input-lg" placeholder="Menu 3">
-        </div>
-        <div class="col-md-2">
-            <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control input-lg" placeholder="Precio">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <input type="text" class="form-control input-lg" placeholder="Descripción">
-        </div>
-    </div>
 </div>
 <div class="row button-container">
     <div class="col-md-6">

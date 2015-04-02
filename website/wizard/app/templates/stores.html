@@ -75,21 +75,10 @@
                     </ui-gmap-google-map>
                 </div>
             </div>
-            <div class="row button-container">
-                <div class="col-md-6">
-                    <button ng-click="save()" type="submit" class="btn btn-primary btn-lg pull-left" ladda="loadingSave" data-style="expand-right">Guardar</button>
-                </div>
-                <div class="col-md-6">
-                    <button ng-click="nextStep()" type="submit" class="btn btn-primary btn-lg pull-right next-step" ladda="loadingNextStep" data-style="expand-right">Mi men&uacute; <i class="fa fa-angle-right"></i></button>
-                </div>
-            </div>
         </form>
     </div>
     <div class="col-lg-2"></div>
 </div>
-
-
-
 
 <div ng-repeat="store in stores" class="row" ng-hide="showForm">
     <div class="col-lg-2"></div>
@@ -105,4 +94,15 @@
     <i class="fa fa-plus"></i> <label>AGREGAR UN LOCAL</label>
 </div>
 <div class="col-lg-2"></div>
+</div>
+<div class="row button-container">
+    <div class="col-lg-2"></div>
+    <div class="col-md-6 col-lg-4">
+        <button ng-click="save()" type="submit" class="btn btn-primary btn-lg pull-left" ladda="loadingSave" data-style="expand-right">Guardar</button>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <button ng-if="showNextStep" ng-click="nextStep()" type="submit" class="btn btn-primary btn-lg pull-right next-step" ladda="loadingNextStep" data-style="expand-right">Mi men&uacute; <i class="fa fa-angle-right"></i></button>
+        <button ng-if="!showNextStep" class="btn btn-primary btn-lg pull-right next-step" disabled="disabled">Mi men&uacute; <i class="fa fa-angle-right"></i></button>
+    </div>
+    <div class="col-lg-2"></div>
 </div>

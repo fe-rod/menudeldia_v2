@@ -23,6 +23,7 @@
             $scope.existingCompany = false;
             $scope.loadingSave = false;
             $scope.loadingNextStep = false;
+            $scope.showNextStep = false;
 
             initImageUpload();
             loadTags();
@@ -119,6 +120,19 @@
                 }
             });
         }
+
+//        $scope.$watch('company', function() {
+//            $scope.showNextStep = ($scope.company.name != "")
+//                && ($scope.company.description != "")
+//                && ($scope.company.url != "")
+//                && ($scope.company.email != "")
+//                && ($scope.company.phone != "");
+//                //&& (!$scope.existingCompany
+//                //    && $scope.user.userName != "" //if first time also check for user and password
+//                //    && $scope.user.password != "");
+//
+//        },
+//        true);
     }
 })();
 
