@@ -45,6 +45,22 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
                   templateUrl: 'templates/menus/tab-menus.html',
                   controller: 'MenusCtrl'
               }
+          },
+          resolve: {
+              geoData: function($cordovaGeolocation){
+                  var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
+                  var latitude, longitude;
+                  return $cordovaGeolocation
+                      .getCurrentPosition(posOptions)
+                      .then(function (position) {
+                          latitude = position.coords.latitude;
+                          longitude = position.coords.longitude;
+                          return {latitude: latitude, longitude: longitude};
+
+                      }, function (err) {
+                          return {};
+                      });
+              }
           }
       })
       .state('tab.menu-detail', {
@@ -71,6 +87,22 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
               'tab-stores': {
                   templateUrl: 'templates/stores/tab-stores.html',
                   controller: 'StoresCtrl'
+              }
+          },
+          resolve: {
+              geoData: function($cordovaGeolocation){
+                  var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
+                  var latitude, longitude;
+                  return $cordovaGeolocation
+                      .getCurrentPosition(posOptions)
+                      .then(function (position) {
+                          latitude = position.coords.latitude;
+                          longitude = position.coords.longitude;
+                          return {latitude: latitude, longitude: longitude};
+
+                      }, function (err) {
+                          return {};
+                      });
               }
           }
       })

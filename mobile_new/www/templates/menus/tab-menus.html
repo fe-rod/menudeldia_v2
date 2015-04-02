@@ -5,7 +5,7 @@
                 on-refresh="refreshMenu()">
         </ion-refresher>
         <ion-list can-swipe="true" ng-hide="geolocError">
-            <ion-item ng-repeat="menu in menus" class="item item-text-wrap item-avatar menuList" href="#/tab/menu/{{menu.id}}">
+            <ion-item collection-repeat="menu in menus" class="item item-text-wrap item-avatar menuList" href="#/tab/menu/{{menu.id}}">
                 <img src="data:image/{{menu.logo.logoExtension}};base64,{{menu.logo.logoBase64}}" />
                 <div class="row">
                     <div class="col-90">
@@ -30,7 +30,7 @@
                 <!--</ion-option-button>-->
             </ion-item>
         </ion-list>
-        <div class="row" ng-show="geolocError">
+        <div class="row" ng-if="geolocError">
             <div class="col">
                 No se ha podido encontrar tu ubicaci&oacute;n. ({{gpsError}})
             </div>

@@ -12,7 +12,7 @@
                 on-refresh="refreshStores()">
         </ion-refresher>
         <ion-list can-swipe="true">
-            <ion-item ng-repeat="store in stores" class="item item-text-wrap item-avatar" href="#/tab/store/{{store.id}}/{{store.distanceTo}}">
+            <ion-item collection-repeat="store in stores" class="item item-text-wrap item-avatar" href="#/tab/store/{{store.id}}/{{store.distanceTo}}">
                 <img src="data:image/{{store.logoExtension}};base64,{{store.logoBase64}}" />
                 <div class="row">
                     <div class="col-90">
@@ -34,7 +34,7 @@
 
             </ion-item>
         </ion-list>
-        <div class="row" ng-show="geolocError">
+        <div class="row" ng-if="geolocError">
             <div class="col">
                 No se ha podido encontrar tu ubicaci&oacute;n. ({{gpsError}})
             </div>

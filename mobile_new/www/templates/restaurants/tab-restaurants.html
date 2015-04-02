@@ -5,7 +5,7 @@
                 on-refresh="refreshRestaurants()">
         </ion-refresher>
         <ion-list can-swipe="true">
-            <ion-item ng-repeat="store in stores" class="item item-text-wrap item-avatar" href="#/tab/stores/restaurant/{{store.id}}">
+            <ion-item collection-repeat="store in stores" class="item item-text-wrap item-avatar" href="#/tab/stores/restaurant/{{store.id}}">
                 <img src="data:image/{{store.logoExtension}};base64,{{store.logoBase64}}" />
                 <div class="row">
                     <div class="col-90">

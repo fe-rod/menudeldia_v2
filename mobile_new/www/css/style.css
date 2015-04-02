@@ -2,11 +2,7 @@
 
 
 .platform-android .tabs{
-    height: 35px;
-}
-
-.platform-android .has-tabs-top{
-    top: 78px;
+    /*height: 35px;*/
 }
 
 .platform-android .tabs-striped .tabs, .platform-android .tabs-striped .tabs {
@@ -58,8 +54,8 @@
 .platform-android .tabs-icon-top.tabs .tab-item,
 .platform-android .tabs-icon-bottom > .tabs .tab-item,
 .platform-android .tabs-icon-bottom.tabs .tab-item{
-    font-size: 12px;
-    line-height: 24px;
+    font-size: 13px;
+    line-height: 50px;
 }
 
 .menuDetail .header-title{

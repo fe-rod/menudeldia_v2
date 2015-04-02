@@ -1,6 +1,6 @@
 angular.module('todayMenu')
 
-    .controller('StoresCtrl', function($scope,$rootScope, Stores, $cordovaGeolocation, $ionicLoading,$ionicPlatform) {
+    .controller('StoresCtrl', function($scope,$rootScope, Stores, $cordovaGeolocation, $ionicLoading,$ionicPlatform, geoData) {
         const pageSize = 10;
         var pageCounter = 0;
 
@@ -12,28 +12,22 @@ angular.module('todayMenu')
         var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000 };
 
         var latitude, longitude;
-        $ionicPlatform.ready(function() {
-            $cordovaGeolocation
-                .getCurrentPosition(posOptions)
-                .then(function (position) {
-                    latitude = position.coords.latitude
-                    longitude = position.coords.longitude
 
-                    Stores.all(pageCounter, pageSize, latitude, longitude).then(function (data) {
-                        $scope.stores = processData(data);
-                        $ionicLoading.hide();
-                        $scope.moreDataCanBeLoaded = (data.length == pageSize);
-                    }, function () {
-                        $scope.geolocError = true;
-                        $scope.gpsError = err.code + ' - ' + err.message;
-                        $ionicLoading.hide();
-                    });
-                }, function (err) {
-                    $ionicLoading.hide();
-                });
-        });
-
-
+        if(geoData){
+            Stores.all(pageCounter, pageSize, geoData.latitude, geoData.longitude).then(function (data) {
+                $scope.stores = processData(data);
+                $ionicLoading.hide();
+                $scope.moreDataCanBeLoaded = (data.length == pageSize);
+            }, function () {
+                $ionicLoading.hide();
+            });
+        }
+        else {
+            alert("error");
+            $scope.geolocError = true;
+            //$scope.gpsError = err.code + ' - ' + err.message;
+            $ionicLoading.hide();
+        }
 
         function processData(data) {
             /*transformations*/
@@ -81,7 +75,6 @@ angular.module('todayMenu')
                         }, function () {
                         });
                     }, function (err) {
-                        //todo:mostrar mensaje indicando que no anda la geolocalizacion
                         $scope.geolocError = true;
                         $scope.gpsError = err.code + ' - ' + err.message;
                     })
