@@ -5,18 +5,19 @@
                 on-refresh="refreshMenu()">
         </ion-refresher>
         <ion-list can-swipe="true" ng-hide="geolocError">
-            <ion-item collection-repeat="menu in menus" class="item item-text-wrap item-avatar menuList" href="#/tab/menu/{{menu.id}}">
+            <ion-item collection-repeat="menu in menus" class="item item-text-wrap item-avatar menu-list" href="#/tab/menu/{{menu.id}}"
+                      item-height="130px">
                 <img src="data:image/{{menu.logo.logoExtension}};base64,{{menu.logo.logoBase64}}" />
                 <div class="row">
-                    <div class="col-90">
+                    <div class="col col-75">
                         {{menu.name}}
                     </div>
-                    <div class="col-20">
+                    <div class="col col-25 align-right">
                         ${{menu.price}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-90">
+                    <div class="col">
                         <p>{{menu.nearestLocation.restaurantName}}</p>
                         <p ng-show="menu.nearestLocation.distance>=0">
                             {{menu.nearestLocation.distance | distance }}
@@ -24,9 +25,9 @@
                     </div>
                 </div>
                 <!--<ion-option-button class="favoriteMenu button-stable" ng-click="favorite(menu)">-->
-                    <!--<div class="row row-center">-->
-                        <!--<i class="icon ion-ios7-star star" ng-class="{'active': menu.favorite}"></i>-->
-                    <!--</div>-->
+                <!--<div class="row row-center">-->
+                <!--<i class="icon ion-ios7-star star" ng-class="{'active': menu.favorite}"></i>-->
+                <!--</div>-->
                 <!--</ion-option-button>-->
             </ion-item>
         </ion-list>

@@ -6,7 +6,6 @@
             </div>
             <div class="col-80">
                 <h4>{{store.restaurantName}}</h4>
-                <h5 style="font-size:10px">{{store.restaurantUrl}}</h5>
             </div>
         </div>
         <div ng-show="store.tagsString.length" class="row divider">
@@ -19,16 +18,6 @@
                 {{store.tagsString}}
             </div>
         </div>
-        <div ng-show="store.restaurantDescription.length" class="row divider">
-            <div class="col col-center">
-                DESCRIPCI&Oacute;N
-            </div>
-        </div>
-        <div ng-show="store.restaurantDescription.length" class="row description">
-            <div class="col">
-                {{store.restaurantDescription}}
-            </div>
-        </div>
         <div ng-show="store.streets.length" class="row divider">
             <div class="col col-center">
                 DIRECCI&Oacute;N
@@ -37,6 +26,26 @@
         <div ng-show="store.streets.length" class="row description">
             <div class="col">
                 {{store.streets}}
+            </div>
+        </div>
+        <div ng-show="store.streets.length" class="row divider">
+            <div class="col col-center">
+                SITIO WEB
+            </div>
+        </div>
+        <div ng-show="store.restaurantUrl.length" class="row description">
+            <div class="col">
+                <a href="{{store.restaurantUrl}}">{{store.restaurantUrl}}</a>
+            </div>
+        </div>
+        <div ng-show="store.restaurantDescription.length" class="row divider">
+            <div class="col col-center">
+                DESCRIPCI&Oacute;N
+            </div>
+        </div>
+        <div ng-show="store.restaurantDescription.length" class="row description">
+            <div class="col">
+                {{store.restaurantDescription}}
             </div>
         </div>
         <div class="row" style="height: 250px">

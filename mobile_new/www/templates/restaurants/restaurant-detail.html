@@ -6,7 +6,6 @@
             </div>
             <div class="col-80">
                 <h4>{{store.name}}</h4>
-                <h5 style="font-size:10px">{{store.url}}</h5>
             </div>
         </div>
         <div ng-show="store.tagsString.length" class="row divider">
@@ -17,6 +16,16 @@
         <div ng-show="store.tagsString.length" class="row description">
             <div class="col">
                 {{store.tagsString}}
+            </div>
+        </div>
+        <div ng-show="store.url.length" class="row divider">
+            <div class="col col-center">
+                SITIO WEB
+            </div>
+        </div>
+        <div ng-show="store.url.length" class="row description">
+            <div class="col" ng-click="openLink()">
+                <a >{{store.url}}</a>
             </div>
         </div>
         <div ng-show="store.description.length" class="row divider">

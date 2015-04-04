@@ -1,5 +1,22 @@
 /* Empty. Add your own CSS if you like */
 
+.align-right{
+    text-align: right;
+}
+
+.store-list .restaurant-name {
+    padding-left:0;
+}
+
+.store-list .item-content {
+    padding-right: 20px;
+    height: 90px;
+}
+
+.restaurant-list .item-content {
+    padding-right: 20px;
+    height: 95px;
+}
 
 .platform-android .tabs{
     /*height: 35px;*/
@@ -58,14 +75,20 @@
     line-height: 50px;
 }
 
+.menu-list .item-content {
+    padding-right: 15px;
+    height: 130px;
+}
+
 .menuDetail .header-title{
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 0;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .menuDetail .header-title .col-75 {
-    padding: 0 8px 0 15px;
+    /*padding: 0 8px 0 15px;*/
 }
 
 .menuDetail .header-title h4.menu-title{

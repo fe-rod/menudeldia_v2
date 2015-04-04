@@ -31,8 +31,6 @@ angular.module('todayMenu')
             return temp;
         }
 
-
-
         $scope.loadMore = function() {
             pageCounter = pageCounter + 1;
             Menus.all(pageCounter,10).then(
@@ -61,7 +59,7 @@ angular.module('todayMenu')
 
     })
 
-    .controller('RestaurantDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $ionicLoading) {
+    .controller('RestaurantDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $ionicLoading, $cordovaInAppBrowser) {
         $rootScope.hideTabs = true;
         $rootScope.hideFilter = true;
 
@@ -75,4 +73,19 @@ angular.module('todayMenu')
         });
 
         $scope.store = data;
+
+        $scope.openLink = function(){
+            var options = {
+                location: 'yes'
+            };
+            alert("dfsdf");
+            $cordovaInAppBrowser.open(link, '_system', options)
+                .then(function(event) {
+                    // success
+                })
+                .catch(function(event) {
+                    // error
+                });
+
+        }
     });

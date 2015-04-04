@@ -12,13 +12,14 @@
                 on-refresh="refreshStores()">
         </ion-refresher>
         <ion-list can-swipe="true">
-            <ion-item collection-repeat="store in stores" class="item item-text-wrap item-avatar" href="#/tab/store/{{store.id}}/{{store.distanceTo}}">
+            <ion-item collection-repeat="store in stores" class="item item-text-wrap item-avatar store-list" href="#/tab/store/{{store.id}}/{{store.distanceTo}}"
+                      item-height="90px">
                 <img src="data:image/{{store.logoExtension}};base64,{{store.logoBase64}}" />
                 <div class="row">
-                    <div class="col-90">
+                    <div class="col col-75 restaurant-name">
                         {{store.restaurantName}}
                     </div>
-                    <div class="col-33">
+                    <div class="col col-25 align-right">
                         <p ng-show="store.distance>=0">
                             {{store.distance | distance}}
                         </p>
@@ -31,7 +32,6 @@
                         </p>
                     </div>
                 </div>
-
             </ion-item>
         </ion-list>
         <div class="row" ng-if="geolocError">
