@@ -7,9 +7,7 @@ angular.module('todayMenu')
         $rootScope.hideTabs = false;
         $rootScope.hideFilter = true;
 
-        $ionicLoading.show({delay:200, template: "Cargando locales cercanos..."});
-
-        var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000 };
+        $ionicLoading.show({delay: 200, template: "Cargando menús cercanos..."});
 
         var latitude, longitude;
 
@@ -23,7 +21,6 @@ angular.module('todayMenu')
             });
         }
         else {
-            alert("error");
             $scope.geolocError = true;
             //$scope.gpsError = err.code + ' - ' + err.message;
             $ionicLoading.hide();
@@ -60,7 +57,7 @@ angular.module('todayMenu')
         };
 
         $scope.refreshStores = function(){
-            var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
+            var posOptions = {timeout: 10000, enableHighAccuracy: true, maximumAge: 10000};
             pageCounter = 0;
             $ionicPlatform.ready(function() {
                 $cordovaGeolocation

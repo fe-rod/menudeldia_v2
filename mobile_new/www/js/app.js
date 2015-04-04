@@ -58,7 +58,7 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
                           return {latitude: latitude, longitude: longitude};
 
                       }, function (err) {
-                          return {};
+                          return null;
                       });
               }
           }
@@ -101,7 +101,7 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
                           return {latitude: latitude, longitude: longitude};
 
                       }, function (err) {
-                          return {};
+                          return null;
                       });
               }
           }
