@@ -57,35 +57,20 @@ angular.module('todayMenu')
             });
         }
 
-    })
-
-    .controller('RestaurantDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $ionicLoading, $cordovaInAppBrowser) {
-        $rootScope.hideTabs = true;
-        $rootScope.hideFilter = true;
-
-        $ionicLoading.hide();
-
-        data = _.extend(data, {
-            tagsString: _.reduce(data.tags,function(mem,item){
-                if(mem == "") { return item.name; }
-                return mem + " - " + item.name;
-            },"")
-        });
-
-        $scope.store = data;
-
-        $scope.openLink = function(){
-            var options = {
-                location: 'yes'
-            };
-            alert("dfsdf");
-            $cordovaInAppBrowser.open(link, '_system', options)
-                .then(function(event) {
-                    // success
-                })
-                .catch(function(event) {
-                    // error
-                });
-
-        }
     });
+//
+//    .controller('RestaurantDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $ionicLoading) {
+//        $rootScope.hideTabs = true;
+//        $rootScope.hideFilter = true;
+//
+//        $ionicLoading.hide();
+//
+//        data = _.extend(data, {
+//            tagsString: _.reduce(data.tags,function(mem,item){
+//                if(mem == "") { return item.name; }
+//                return mem + " - " + item.name;
+//            },"")
+//        });
+//
+//        $scope.store = data;
+//    });

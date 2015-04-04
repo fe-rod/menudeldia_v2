@@ -35,7 +35,7 @@
         </div>
         <div ng-show="store.restaurantUrl.length" class="row description">
             <div class="col">
-                <a href="{{store.restaurantUrl}}">{{store.restaurantUrl}}</a>
+                <a href="" ng-click="openLink(store.restaurantUrl)">{{store.restaurantUrl}}</a>
             </div>
         </div>
         <div ng-show="store.restaurantDescription.length" class="row divider">

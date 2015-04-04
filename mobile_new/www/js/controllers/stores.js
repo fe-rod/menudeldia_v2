@@ -87,7 +87,7 @@ angular.module('todayMenu')
 
     })
 
-    .controller('StoreDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data) {
+    .controller('StoreDetailCtrl', function($scope, $rootScope, $stateParams, Stores,data, $cordovaInAppBrowser) {
         $rootScope.hideTabs = true;
         $rootScope.hideFilter = true;
 
@@ -101,4 +101,18 @@ angular.module('todayMenu')
         $scope.store = data;
         $scope.distanceAvailable = $stateParams.distance != 0;
         $scope.distanceTo = Math.ceil($stateParams.distance);
+
+        $scope.openLink = function(link){
+            var options = {
+                location: 'yes'
+            };
+            $cordovaInAppBrowser.open(link, '_system', options)
+                .then(function(event) {
+                    // success
+                })
+                .catch(function(event) {
+                    // error
+                });
+
+        }
     });

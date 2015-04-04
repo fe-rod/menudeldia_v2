@@ -24,8 +24,8 @@
             </div>
         </div>
         <div ng-show="store.url.length" class="row description">
-            <div class="col" ng-click="openLink()">
-                <a >{{store.url}}</a>
+            <div class="col">
+                <a href="" ng-click="openLink(store.url)">{{store.url}}</a>
             </div>
         </div>
         <div ng-show="store.description.length" class="row divider">
