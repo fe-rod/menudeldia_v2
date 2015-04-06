@@ -1,7 +1,7 @@
 angular.module('todayMenu')
 
     .controller('MenusCtrl', function($scope, $rootScope, $stateParams, Menus, $ionicPopover, $cordovaGeolocation,
-                                      $ionicLoading,$ionicPlatform, geoData, $log) {
+                                      $ionicLoading,$ionicPlatform, $log) {
         const pageSize = 10;
         var pageCounter = 0;
 
@@ -14,22 +14,29 @@ angular.module('todayMenu')
 
         var latitude, longitude;
 
-        if(geoData){
-            Menus.all(pageCounter, pageSize, geoData.latitude, geoData.longitude)
-                .then(function (data) {
-                    $scope.menus = data;
-                    $scope.moreDataCanBeLoaded = (data.length == pageSize);
-                    $ionicLoading.hide();
-                }, function () {
+        $ionicPlatform.ready(function() {
+
+            var posOptions = {timeout: 30000, enableHighAccuracy: true, maximumAge: 10000};
+            return $cordovaGeolocation
+                .getCurrentPosition(posOptions)
+                .then(function (position) {
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    Menus.all(pageCounter, pageSize, latitude, longitude)
+                        .then(function (data) {
+                            $scope.menus = data;
+                            $scope.moreDataCanBeLoaded = (data.length == pageSize);
+                            $ionicLoading.hide();
+                        }, function () {
+                            $ionicLoading.hide();
+                        });
+
+                }, function (err) {
+                    $scope.geolocError = true;
+                    //$scope.gpsError = err.code + ' - ' + err.message;
                     $ionicLoading.hide();
                 });
-        }
-        else {
-            $scope.geolocError = true;
-            //$scope.gpsError = err.code + ' - ' + err.message;
-            $ionicLoading.hide();
-        }
-
+        });
 
         $scope.favorite = function(menu){
             menu.favorite = !menu.favorite;
