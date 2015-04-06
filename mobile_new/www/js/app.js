@@ -21,7 +21,7 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -157,6 +157,8 @@ angular.module('todayMenu', ['ionic', 'ngCordova'])
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/menus');
+
+  $ionicConfigProvider.platform.ios.backButton.text('Volver');
 
 })
 .constant('appConfig',
