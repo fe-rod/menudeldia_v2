@@ -26,6 +26,7 @@
     background-color: #F44336;
 }
 
+
 [nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
     background-color: #F44336;
 }
@@ -39,6 +40,11 @@
 }
 
 .platform-android .bar-blue {
+    background-color: #F44336;
+    border-color: #F44336;
+}
+
+.platform-ios .bar-blue {
     background-color: #F44336;
     border-color: #F44336;
 }
@@ -57,6 +63,10 @@
 }
 
 .platform-android .bar-blue .title.title-left.header-item{
+    color: #fff;
+}
+
+.platform-ios .bar-stable .title{
     color: #fff;
 }
 

@@ -7,7 +7,7 @@ angular.module('todayMenu')
         $rootScope.hideTabs = false;
         $rootScope.hideFilter = true;
 
-        $ionicLoading.show({delay: 200, template: "Cargando menús cercanos..."});
+        $ionicLoading.show({delay: 200, template: "Cargando locales cercanos..."});
 
         var latitude, longitude;
 
