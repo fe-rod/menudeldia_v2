@@ -48,10 +48,13 @@
     background-color: #F44336;
     border-color: #F44336;
 }
-
-.platform-android .bar-stable {
+.bar.bar-stable {
     background-color: #F44336;
     border-color: #F44336;
+}
+
+.bar.bar-stable .title{
+    color: #fff;
 }
 
 .platform-android .bar-blue .title.title-left{
@@ -67,6 +70,10 @@
 }
 
 .platform-ios .bar-stable .title{
+    color: #fff;
+}
+
+.platform-ios .secondary-action a{
     color: #fff;
 }
 
@@ -191,10 +198,6 @@
     color: #474747;
 }
 
-.commentsForm .title , .commentsForm span{
-    color: #444;
-}
-
 .commentsForm textarea{
     height: 150px;
 }
@@ -203,7 +206,7 @@
 
 }
 
-.platform-android .commentsForm .title, .platform-android .commentsForm span{
+.commentsForm .title, .commentsForm span{
     color: #fff;
 }
 
@@ -226,4 +229,8 @@
 .platform-ios ion-tabs.tabs-color-active-positive .tab-item.active,
 .platform-ios ion-tabs.tabs-color-active-positive .tab-item.activated{
     color: #F44336;
+}
+
+.bar-stable .button.button-clear {
+    color: #fff;
 }
