@@ -5,9 +5,9 @@
         .module('menudeldia')
         .controller('storesCtrl', stores);
 
-    stores.$inject = ['$scope', '$rootScope', '$state', '$stateParams', 'companyService', '$timeout', '$log'];
+    stores.$inject = ['$scope', '$rootScope', '$state', '$stateParams', 'companyService', '$timeout', '$log','companyInfo','storesService','stores'];
 
-    function stores($scope, $rootScope, $state, $stateParams, companyService, $timeout,$log) {
+    function stores($scope, $rootScope, $state, $stateParams, companyService, $timeout,$log, companyInfo, storesService,stores) {
 
         $scope.showStore = showStore;
         $scope.addStore = addStore;
@@ -15,22 +15,21 @@
         $scope.nextStep = nextStep;
         $scope.toggleOpenDay = toggleOpenDay;
 
+        $scope.companyName = companyInfo.name;
+
         activate();
 
         function activate(){
             $rootScope.enabledStores = true;
             $scope.loadingSave = false;
             $scope.loadingNextStep = false;
-            loadCompanyWithStores($stateParams.cId);
             initMap();
+            loadCompanyStores();
         }
 
-        function loadCompanyWithStores(id){
-            var company = $scope.company = companyService.getCompanyWithStores(id);
-            //if company not found show error (404)
-            //404
-
-            $scope.stores = company.stores;
+        function loadCompanyStores(){
+            debugger;
+            $scope.stores = stores;
 
             $scope.showForm = false;
             if($scope.stores.length == 0) {
@@ -55,7 +54,8 @@
                 features: store.features,
                 delivery: store.delivery,
                 days : store.days,
-                location: store.location
+                location: store.location,
+                restaurantId:store.restaurantId
             };
 
             $scope.markerOn = true;
@@ -73,24 +73,61 @@
             $scope.loadingSave = true;
             $scope.store.location.latitude = $scope.marker.coords.latitude;
             $scope.store.location.longitude = $scope.marker.coords.longitude;
-            $scope.stores.push($scope.store);
-            $timeout(function(){
-                $scope.loadingSave = false;
-                $scope.showForm = false;
+            debugger;
 
-                //clear marker
-                $scope.marker = null;
-                $scope.markerOn = false;
+            if($scope.store.id == null){
+                $scope.store.restaurantId = $stateParams.id;
+                storesService.addStore($scope.store)
+                    .then(
+                    function(result) {
+                        $scope.store.id = result.id;
+                        $scope.stores.push($scope.store);
 
-            }, 3000)
+
+                        $scope.loadingSave = false;
+                        $scope.showForm = false;
+
+                        //clear marker
+                        $scope.marker = null;
+                        $scope.markerOn = false;
+                    },
+                    function(result){
+                        $scope.loadingSave = false;
+                    });
+            }
+            else{
+                storesService.updateStore($scope.store)
+                    .then(
+                    function(result) {
+                        storesService.stores($stateParams.id).then(
+                            function (result){
+                                $scope.stores=result;
+                                $scope.loadingSave = false;
+                                $scope.showForm = false;
+
+                                //clear marker
+                                $scope.marker = null;
+                                $scope.markerOn = false;
+                        },
+                            function(){
+                                $scope.loadingSave = false;
+                                $scope.showForm = false;
+
+                                //clear marker
+                                $scope.marker = null;
+                                $scope.markerOn = false;
+                        });
+                    },
+                    function(result){
+                        $scope.loadingSave = false;
+                    });
+            }
         }
 
         function nextStep(){
             $scope.loadingNextStep = true;
-            $timeout(function(){
-                $state.go('menu');
-                $scope.loadingNextStep = false;
-            }, 3000)
+            $state.go('menu',{id:$stateParams.id});
+            $scope.loadingNextStep = false;
         }
 
         function toggleOpenDay(day){
@@ -130,13 +167,13 @@
                 features: '',
                 delivery: true,
                 days : [
-                    { name: 'Lunes', from: '', to:'', open: true},
-                    { name: 'Martes', from: '', to:'', open: true},
-                    { name: 'Miércoles', from: '', to:'', open: true},
-                    { name: 'Jueves', from: '', to:'', open: true},
-                    { name: 'Viernes', from: '', to:'', open: true},
-                    { name: 'Sábado', from: '', to:'', open: true},
-                    { name: 'Domingo', from: '', to:'', open: true}
+                    { dayOfWeek:1, name: 'Lunes', from: '', to:'', open: true},
+                    { dayOfWeek:2, name: 'Martes', from: '', to:'', open: true},
+                    { dayOfWeek:3, name: 'Miércoles', from: '', to:'', open: true},
+                    { dayOfWeek:4, name: 'Jueves', from: '', to:'', open: true},
+                    { dayOfWeek:5, name: 'Viernes', from: '', to:'', open: true},
+                    { dayOfWeek:6, name: 'Sábado', from: '', to:'', open: true},
+                    { dayOfWeek:0, name: 'Domingo', from: '', to:'', open: true}
                 ],
                 location: {
                     latitude: null,

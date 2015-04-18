@@ -8,7 +8,7 @@
                     En caso de tener varios locales, este texto permitir&aacute; identificar tus locales.
                 </p>
                 <p class="help-block text-left">
-                    Ejemplo:<strong>Nombre empresa - {{store.identifier}}</strong>
+                    Ejemplo: <strong>{{companyName}} - {{store.identifier}}</strong>
                 </p>
             </div>
             <div class="form-group">
@@ -47,13 +47,13 @@
                         <h2><small>{{day.name}}</small></h2>
                     </div>
                     <div class="col-md-2">
-                        <select class="form-control">
+                        <select class="form-control" ng-model="day.from">
                             <option>09:00</option>
                             <option>10:00</option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <select class="form-control ">
+                        <select class="form-control " ng-model="day.to">
                             <option>09:00</option>
                             <option>10:00</option>
                         </select>
@@ -83,7 +83,7 @@
 <div ng-repeat="store in stores" class="row" ng-hide="showForm">
     <div class="col-lg-2"></div>
     <div class="col-lg-8 col-md-12 well add-store-container" ng-click="showStore(store)">
-        <label>Nombre empresa - {{store.identifier}}</label>
+        <label>{{companyName}} - {{store.identifier}}</label>
     </div>
     <div class="col-lg-2"></div>
 </div>
