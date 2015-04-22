@@ -45,7 +45,7 @@
 }
 
 .platform-ios .bar-blue {
-    background-color: #F44336;
+    /*background-color: #F44336;*/
     border-color: #F44336;
 }
 .bar.bar-stable {
