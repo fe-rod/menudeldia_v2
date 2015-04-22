@@ -10,14 +10,27 @@ angular.module("menudeldia")
                 controller: 'companyCtrl'
             })
             .state('stores', {
-                url: '/stores',
+                url: '/stores/:id',
                 templateUrl: 'app/templates/stores.html',
-                controller: 'storesCtrl'
+                controller: 'storesCtrl',
+                resolve: {
+                    companyInfo: function($stateParams,companyService){
+                        return companyService.getCompanyName($stateParams.id);
+                    },
+                    stores: function($stateParams,storesService){
+                        return storesService.stores($stateParams.id);
+                    }
+                }
             })
             .state('menu', {
-                url: '/menu',
+                url: '/menu/:id',
                 templateUrl: 'app/templates/menu.html',
-                controller: 'menuCtrl'
+                controller: 'menuCtrl',
+                resolve:{
+                    restaurantMenus: function($stateParams,menuService){
+                        return menuService.menus($stateParams.id);
+                    }
+                }
             });
 
         uiGmapGoogleMapApiProvider.configure({

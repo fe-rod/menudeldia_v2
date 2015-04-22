@@ -44,7 +44,10 @@
         }
 
         function loadTags(){
-            $scope.tags = configService.getTags();
+            configService.getTags().then(function(result)
+            {
+                $scope.tags = result;
+            });
         }
 
         function registerUser(){
@@ -57,26 +60,29 @@
 
         function saveCompany(){
             $scope.loadingSave = true;
-
+            debugger;
             uploadImage();
 
-            registerUser();
+            //registerUser();
 
             //set new tags
             $scope.company.tags = _.pluck(_.filter($scope.tags, function(i){ return i.selected }), 'id');
-//          companyService.save($scope.company).then(function(){
-                $timeout(function(){
-                    $scope.loadingSave = false;
-                }, 3000);
-//          });
+
+            $scope.company.emailUserName = $scope.user.userName;
+            $scope.company.password = $scope.user.password;
+
+
+          companyService.registerCompany($scope.company).then(function(result){
+                var id = result.restaurantId;
+
+
+          });
         }
 
         function nextStep(){
             $scope.loadingNextStep = true;
-            $timeout(function(){
-                $scope.loadingNextStep = false;
-                $state.go('stores');
-            }, 3000)
+            $state.go('stores',{id:'70AA8EB9-7833-407E-912E-AC34B0D6BA8F'});
+            $scope.loadingNextStep = false;
         }
 
         function newCompany(){
@@ -87,7 +93,9 @@
                 email: '',
                 phone: '',
                 tags: [],
-                image:''
+                image:'',
+                emailUserName:'',
+                password:''
             };
 
             $scope.user = {
